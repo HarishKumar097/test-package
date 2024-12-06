@@ -7,9 +7,9 @@ import type {
   UpdateObject,
   UploadMediaFromUrlProps,
   FetcherProps,
-} from "../utils/Types";
+} from "../utils/Types.ts";
 
-import Fetcher from "../utils/Fetch";
+import Fetcher from "../utils/Fetch.ts";
 
 class Media {
   mediaPath: string;

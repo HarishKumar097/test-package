@@ -2,9 +2,9 @@ import type {
   RequestObject,
   PaginationProps,
   FetcherProps,
-} from "../utils/Types";
+} from "../utils/Types.ts";
 
-import Fetcher from "../utils/Fetch";
+import Fetcher from "../utils/Fetch.ts";
 
 class Signingkey {
   fetch: FetcherProps;

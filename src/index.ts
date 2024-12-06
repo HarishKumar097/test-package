@@ -14,7 +14,7 @@ import type {
   UpdateObject,
   InitiateLiveStreamProps,
   UpdateSimulcastProps,
-} from "./utils/Types";
+} from "./utils/Types.ts";
 
 import Media from "./Media";
 import Signingkey from "./System";
