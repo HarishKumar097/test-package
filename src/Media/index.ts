@@ -9,7 +9,7 @@ import type {
   FetcherProps,
 } from "../utils/Types.ts";
 
-import Fetcher from "../utils/Fetch.ts";
+import Fetcher from "../Fetch";
 
 class Media {
   mediaPath: string;

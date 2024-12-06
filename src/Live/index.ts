@@ -10,9 +10,9 @@ import type {
   UpdateSimulcastProps,
   FetcherProps,
   HeaderOptions,
-} from "../utils/Types.ts";
+} from "../utils/Types";
 
-import Fetcher from "../utils/Fetch.ts";
+import Fetcher from "../Fetch";
 
 class LiveStream {
   livePath: string;

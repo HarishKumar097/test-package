@@ -19,7 +19,6 @@
     "strictPropertyInitialization": true,
     "noImplicitThis": true,
     "noImplicitReturns": true,
-    "allowImportingTsExtensions": true,
   },
   "include": ["src/**/*.ts"]
 }
