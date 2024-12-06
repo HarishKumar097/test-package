@@ -1,5 +1,5 @@
 {
-  "name": "node-test-sdk",
+  "name": "server-node-sdk",
   "version": "1.0.0",
   "description": "The offcial Typescript sdk for the FastPix API",
   "types": "dist/index.d.ts",
