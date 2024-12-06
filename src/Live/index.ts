@@ -10,7 +10,7 @@ import type {
   UpdateSimulcastProps,
   FetcherProps,
   HeaderOptions,
-} from "../utils/Types";
+} from "../Types";
 
 import Fetcher from "../Fetch";
 

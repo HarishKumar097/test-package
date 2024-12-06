@@ -3,7 +3,7 @@ import type {
   FetchResponse,
   ConfigErrorResponse,
   RequestObject,
-} from "../utils/Types";
+} from "../Types";
 
 class Fetcher {
   // Fetches data from the specified URL using the provided headers.

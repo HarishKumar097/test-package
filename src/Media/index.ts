@@ -7,7 +7,7 @@ import type {
   UpdateObject,
   UploadMediaFromUrlProps,
   FetcherProps,
-} from "../utils/Types.ts";
+} from "../Types";
 
 import Fetcher from "../Fetch";
 

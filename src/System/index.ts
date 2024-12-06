@@ -2,7 +2,7 @@ import type {
   RequestObject,
   PaginationProps,
   FetcherProps,
-} from "../utils/Types.ts";
+} from "../Types";
 
 import Fetcher from "../Fetch";
 
