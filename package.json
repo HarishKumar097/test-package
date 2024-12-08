@@ -1,6 +1,6 @@
 {
   "name": "server-node-sdk",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "The offcial Typescript sdk for the FastPix API",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
@@ -12,8 +12,8 @@
   },
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
-    "build:cjs": "esbuild src/index.ts --bundle  --minify --outfile=dist/index.cjs --platform=node --format=cjs",
-    "build:esm": "esbuild src/index.ts --bundle --minify  --outfile=dist/index.js --platform=node --format=esm",
+    "build:cjs": "esbuild src/index.ts --bundle --sourcemap  --minify --outfile=dist/index.cjs --platform=node --format=cjs",
+    "build:esm": "esbuild src/index.ts --bundle --sourcemap --minify  --outfile=dist/index.js --platform=node --format=esm",
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir './dist'",
     "build": "npm run format && npm run build:esm && npm run build:cjs && npm run build:types"
   },
