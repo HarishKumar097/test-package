@@ -1,8 +1,4 @@
-import type {
-  RequestObject,
-  PaginationProps,
-  FetcherProps,
-} from "../Types";
+import type { RequestObject, PaginationProps, FetcherProps } from "../Types";
 
 import Fetcher from "../Fetch";
 
