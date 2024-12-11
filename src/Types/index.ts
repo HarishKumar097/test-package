@@ -16,11 +16,6 @@ export interface AccessPolicy {
   accessPolicy: string;
 }
 
-// Interface for signing key properties
-export interface SigningKeyProps {
-  signingKeyId: string;
-}
-
 // Interface for media properties
 export interface MediaProps {
   mediaId?: string;

@@ -18,6 +18,7 @@ class Fetcher {
       // If the response is successful, parse and return the JSON response.
       if (response.ok) {
         const successResponse = await response.json();
+
         // @ts-ignore
         return successResponse;
       }

@@ -3,7 +3,6 @@ import { Buffer } from "buffer";
 import type {
   RequestObject,
   PaginationProps,
-  SigningKeyProps,
   UploadMediaFromUrlProps,
   DirectUploadRequest,
   MediaProps,
@@ -17,13 +16,11 @@ import type {
 } from "./Types";
 
 import Media from "./Media";
-import Signingkey from "./System";
 import LiveStream from "./Live";
 
 class FastPix {
   private accessTokenId: string; // Access token ID for authentication
   private secretKey: string; // Secret key for authentication
-  private signingKeyInstance: Signingkey | null = null; // Signing key service instance
   private mediaService: Media | null = null; // Media service instance
   private liveStream: LiveStream | null = null; // Live stream service instance
   private encodedAuthToken: string | undefined; // Encoded authorization token
@@ -35,7 +32,6 @@ class FastPix {
     this.validateSecrets(); // Validate the provided credentials
 
     this.mediaService = new Media();
-    this.signingKeyInstance = new Signingkey();
     this.liveStream = new LiveStream();
 
     // Encode the access token and secret key into a base64 string
@@ -64,35 +60,6 @@ class FastPix {
     if (!this.secretKey || typeof this.secretKey !== "string") {
       throw new Error('Invalid secretKey: The "secretKey" is required.');
     }
-  }
-
-  // Signing Key Methods
-  // Creates a new signing key
-  generateSigningKey() {
-    return this.signingKeyInstance
-      ? this.signingKeyInstance.createSigningKey(this.RequestObject)
-      : null;
-  }
-
-  // Retrieves a list of signing keys with pagination
-  getAllSingingKeyList(props?: PaginationProps) {
-    return this.signingKeyInstance
-      ? this.signingKeyInstance.getAllSigningKeys(props, this.RequestObject)
-      : null;
-  }
-
-  // Fetches a signing key by its ID.
-  getSigningKeyById(props: SigningKeyProps) {
-    return this.signingKeyInstance
-      ? this.signingKeyInstance.getSigningKey(props, this.RequestObject)
-      : null;
-  }
-
-  // Removes a signing key by its ID.
-  deleteSigningKey(props: SigningKeyProps) {
-    return this.signingKeyInstance
-      ? this.signingKeyInstance.deleteSigningKey(props, this.RequestObject)
-      : null;
   }
 
   // Media Methods
