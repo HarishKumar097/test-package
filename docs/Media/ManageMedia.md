@@ -7,7 +7,7 @@ To manage your media assets, the **`mediaId`** is the mandatory parameter requir
 
 ---
 
-# Method: getAllMediaAssets
+# Method: getAllMediaAssets()
 
 The `getAllMediaAssets` method allows you to fetch a list of all media assets. This method accepts three optional parameters: `limit`, `offset`, and `orderBy`. If not provided, the method will use the default values for these parameters.
 
@@ -34,7 +34,7 @@ console.log("Fetched Media Assets:", mediaAssets);
 
 ---
 
-# Method: getMediaAssetById
+# Method: getMediaAssetById()
 
 The `getMediaAssetById` method allows you to retrieve a specific media asset by its unique `mediaId`. You must provide the `mediaId` of the asset you want to fetch.
 
@@ -58,7 +58,7 @@ console.log("Retrieved media asset by ID:", getMediaAsset);
 
 ---
 
-# Method: updateMediaAsset
+# Method: updateMediaAsset()
 
 The `updateMediaAsset` method allows you to update metadata or other properties of a specific media asset. You must provide the `mediaId` of the asset you wish to update, along with the metadata or other fields to be updated.
 
@@ -103,7 +103,7 @@ console.log("Updated Media Asset:", updateMediaAsset);
 
 ---
 
-# Method: deleteMediaAsset
+# Method: deleteMediaAsset()
 
 The `deleteMediaAsset` method allows you to delete a specific media asset by its unique ID. You must provide the `mediaId` of the asset to delete.
 
@@ -127,7 +127,7 @@ console.log("Deleted Media Asset:", deleteMediaAsset);
 
 ---
 
-# Method: getMediaAssetInfo
+# Method: getMediaAssetInfo()
 
 The `getMediaAssetInfo` method allows you to retrieve detailed information about the media inputs associated with a specific media asset. You can use this endpoint to verify the media file’s input URL, track creation status, and container format. The `mediaId` (either `uploadId` or `id`) must be provided to fetch the information.
 

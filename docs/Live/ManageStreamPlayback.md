@@ -1,4 +1,10 @@
-# Method: generateLiveStreamPlaybackId
+# Managing Live Stream Playback
+
+To manage playback, you must first initiate a live stream, which will provide you with a unique `streamId`. This `streamId` will be used across all playback management operations, such as generating playback IDs, retrieving policies, and deleting them. Make sure to save this `streamId` for future use.
+
+---
+
+# Method: generateLiveStreamPlaybackId()
 
 The `generateLiveStreamPlaybackId` method allows you to generate a playback ID for a live stream. This requires the `streamId` of the live stream you want to generate the playback ID for, as well as the desired `accessPolicy` which controls whether the stream will be public or private.
 
@@ -23,7 +29,7 @@ console.log("Generated Live Stream Playback ID:", generateLiveStreamPlaybackId);
 
 ---
 
-# Method: deleteLiveStreamPlaybackId
+# Method: deleteLiveStreamPlaybackId()
 
 The `deleteLiveStreamPlaybackId` method allows you to delete a specific playback ID for a live stream. To use this method, you need to provide both the `streamId` of the live stream and the `playbackId` of the stream you wish to delete. This method will permanently remove the playback ID for that specific live stream.
 
@@ -48,7 +54,7 @@ console.log("Deleted Live Stream Playback ID:", deleteLiveStreamPlaybackId);
 
 ---
 
-# Method: getLiveStreamPlaybackPolicy
+# Method: getLiveStreamPlaybackPolicy()
 
 The `getLiveStreamPlaybackPolicy` method allows you to retrieve the playback policy for a specific live stream playback ID. You need to provide both the `streamId` of the live stream and the `playbackId` associated with that stream to fetch the playback policy.
 

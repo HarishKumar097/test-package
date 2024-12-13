@@ -1,4 +1,4 @@
-# Method: generateMediaPlaybackId
+# Method: generateMediaPlaybackId()
 
 The `generateMediaPlaybackId` method allows you to generate a playback ID for a specific media asset. You must provide the `mediaId` of the asset for which you want to generate the playback ID, and you can also configure options such as the `accessPolicy` to control the visibility of the media.
 
@@ -31,7 +31,7 @@ console.log("Playback ID Creation Response:", playbackIdResponse);
 
 ---
 
-# Method: deleteMediaPlaybackId
+# Method: deleteMediaPlaybackId()
 
 The `deleteMediaPlaybackId` method allows you to delete a specific playback ID for a media asset. You must provide both the `mediaId` (the unique identifier for the media) and the `playbackId` (the unique identifier for the playback) to delete the playback ID.
 

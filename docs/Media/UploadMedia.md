@@ -1,4 +1,4 @@
-# Method: uploadMediaFromUrl
+# Method: uploadMediaFromUrl()
 
 The `uploadMediaFromUrl` method allows you to upload media directly from a URL. This method requires the `inputs` array, which contains media objects specifying different types such as `video`, `audio` and `watermark`. Each media object can include various optional parameters like `audio`, `metadata`, `subtitle`, and `watermark`, depending on the media type specified.
 
@@ -159,7 +159,7 @@ console.log("Media uploaded successfully:", uploadMedia);
 
 ---
 
-# Method: uploadMediaFromDevice
+# Method: uploadMediaFromDevice()
 
 This method allows you to upload a video file directly from your local device to FastPix. By using this method with your desired media settings, you will receive an `uploadId` and a `url`. You can then use the `url` to upload your media via a HTTP `PUT` request. Note that `corsOrigin` and `accessPolicy` are mandatory fields, while the other parameters are optional.
 

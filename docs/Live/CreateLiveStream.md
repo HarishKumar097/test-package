@@ -1,4 +1,4 @@
-# Method: initiateLiveStream
+# Method: initiateLiveStream()
 
 The `initiateLiveStream` method allows you to start a live stream with specific configurations. You can define settings for playback, input media, and metadata. This method returns the details of the initiated stream, including the unique `streamId` and `streamKey` that you can use for managing further live stream operations.
 
