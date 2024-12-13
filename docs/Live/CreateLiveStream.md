@@ -2,22 +2,21 @@
 
 The `initiateLiveStream` method allows you to start a live stream with specific configurations. You can define settings for playback, input media, and metadata. This method returns the details of the initiated stream, including the unique `streamId` and `streamKey` that you can use for managing further live stream operations.
 
-### **Parameter Details**
+### Parameter Details:
 
-#### **This method accepts the following parameters:**
 
 | **Parameter**        | **Description**                                                           | **Type** | **Accepted Values** |
 | -------------------- | ------------------------------------------------------------------------- | -------- | ------------------- |
 | `playbackSettings`   | Defines settings related to playback, such as access policy.              | `Object` | See details below   |
 | `inputMediaSettings` | Defines settings related to the media being streamed, such as resolution. | `Object` | See details below   |
 
-### **playbackSettings**
+#### playbackSettings
 
 | **Parameter**  | **Description**                                                                   | **Type** | **Accepted Values**     |
 | -------------- | --------------------------------------------------------------------------------- | -------- | ----------------------- |
 | `accessPolicy` | Determines if access to the streamed content is kept private or available to all. | `String` | `"public"`, `"private"` |
 
-#### **inputMediaSettings**
+#### inputMediaSettings
 
 | **Parameter**     | **Description**                                                                                | **Type**  | **Accepted Values**                                             |
 | ----------------- | ---------------------------------------------------------------------------------------------- | --------- | --------------------------------------------------------------- |
@@ -27,7 +26,7 @@ The `initiateLiveStream` method allows you to start a live stream with specific 
 | `metadata`        | Optional metadata for tagging the live stream. Up to 10 key-value pairs.                       | `Object`  | Any valid key-value pair (max 255 characters per key and value) |
 | `enableDvrMode`   | Enables or disables DVR mode for the live stream. When enabled, viewers can rewind the stream. | `Boolean` | `true`, `false`                                                 |
 
-### **Example Request:**
+### Example Request:
 
 ```javascript
 // Define the live stream request with custom configurations

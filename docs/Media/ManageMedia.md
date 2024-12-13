@@ -11,7 +11,7 @@ To manage your media assets, the **`mediaId`** is the mandatory parameter requir
 
 The `getAllMediaAssets` method allows you to fetch a list of all media assets. This method accepts three optional parameters: `limit`, `offset`, and `orderBy`. If not provided, the method will use the default values for these parameters.
 
-### **Parameters**
+### Parameters Details:
 
 | **Parameter** | **Description**                                                                            | **Type** | **Default Value** | **Accepted Values**                         |
 | ------------- | ------------------------------------------------------------------------------------------ | -------- | ----------------- | ------------------------------------------- |
@@ -19,7 +19,7 @@ The `getAllMediaAssets` method allows you to fetch a list of all media assets. T
 | `offset`      | Determines the starting point for data retrieval in a paginated list.                      | `Number` | `1`               | Any positive integer (e.g., `1`, `5`, `10`) |
 | `orderBy`     | Sorts the values in the list. The values can be arranged in descending or ascending order. | `String` | `desc`            | `"desc"`, `"asc"`                           |
 
-### **Example Request with Custom Parameters:**
+### Example Request:
 
 ```javascript
 const mediaQueryParams = {
@@ -38,13 +38,13 @@ console.log("Fetched Media Assets:", mediaAssets);
 
 The `getMediaAssetById` method allows you to retrieve a specific media asset by its unique `mediaId`. You must provide the `mediaId` of the asset you want to fetch.
 
-### **Parameters**
+### Parameters Details:
 
 | **Parameter**        | **Description**                                                                                | **Type** | **Required** | **Accepted Values**                |
 | -------------------- | ---------------------------------------------------------------------------------------------- | -------- | ------------ | ---------------------------------- |
 | `mediaId` (required) | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters. | `String` | Yes          | Any valid string (up to 255 chars) |
 
-### **Example Request:**
+### Example Request:
 
 ```javascript
 // Define the parameter for fetching a specific media asset by ID.
@@ -62,14 +62,14 @@ console.log("Retrieved media asset by ID:", getMediaAsset);
 
 The `updateMediaAsset` method allows you to update metadata or other properties of a specific media asset. You must provide the `mediaId` of the asset you wish to update, along with the metadata or other fields to be updated.
 
-### **Parameters**
+### Parameters Details:
 
 | **Parameter**         | **Description**                                                                                | **Type** | **Accepted Values**                |
 | --------------------- | ---------------------------------------------------------------------------------------------- | -------- | ---------------------------------- |
 | `mediaId` (required)  | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters. | `String` | Any valid string (up to 255 chars) |
 | `metadata` (required) | Metadata key-value pairs to be updated for the media asset.                                    | `Object` | Key-value pairs (max 10 entries)   |
 
-### **Metadata Object**
+### Metadata Object
 
 | **Parameter** | **Description**                                                | **Type** | **Accepted Values**                |
 | ------------- | -------------------------------------------------------------- | -------- | ---------------------------------- |
@@ -78,7 +78,7 @@ The `updateMediaAsset` method allows you to update metadata or other properties 
 
 You can add up to 10 metadata entries to the `metadata` object. Each entry is a key-value pair. This allows you to tag your media asset for easier identification or categorization.
 
-### **Example Request:**
+### Example Request:
 
 ```javascript
 // Define the parameter for specifying the media asset to be updated.
@@ -107,13 +107,13 @@ console.log("Updated Media Asset:", updateMediaAsset);
 
 The `deleteMediaAsset` method allows you to delete a specific media asset by its unique ID. You must provide the `mediaId` of the asset to delete.
 
-### **Parameters**
+### Parameters Details:
 
 | **Parameter**        | **Description**                                                                                | **Type** | **Accepted Values**                     |
 | -------------------- | ---------------------------------------------------------------------------------------------- | -------- | --------------------------------------- |
 | `mediaId` (required) | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters. | `String` | Any valid string (up to 255 characters) |
 
-### **Example Request:**
+### Example Request:
 
 ```javascript
 // Define the parameter for specifying the media asset to be deleted.
@@ -131,13 +131,13 @@ console.log("Deleted Media Asset:", deleteMediaAsset);
 
 The `getMediaAssetInfo` method allows you to retrieve detailed information about the media inputs associated with a specific media asset. You can use this endpoint to verify the media file’s input URL, track creation status, and container format. The `mediaId` (either `uploadId` or `id`) must be provided to fetch the information.
 
-### **Parameters**
+### Parameters Details:
 
 | **Parameter**        | **Description**                                                                                | **Type** | **Accepted Values**                     |
 | -------------------- | ---------------------------------------------------------------------------------------------- | -------- | --------------------------------------- |
 | `mediaId` (required) | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters. | `String` | Any valid string (up to 255 characters) |
 
-### **Example Request:**
+### Example Request:
 
 ```javascript
 // Define the parameter for specifying the media asset whose info is to be retrieved.

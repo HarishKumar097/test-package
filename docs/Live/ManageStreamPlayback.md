@@ -2,14 +2,14 @@
 
 The `generateLiveStreamPlaybackId` method allows you to generate a playback ID for a live stream. This requires the `streamId` of the live stream you want to generate the playback ID for, as well as the desired `accessPolicy` which controls whether the stream will be public or private.
 
-### **Parameter Details**
+### Parameter Details:
 
 | **Parameter**             | **Description**                                                                                       | **Type** | **Default Value** | **Accepted Values**                   |
 | ------------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ----------------- | ------------------------------------- |
 | `streamId` (required)     | The unique identifier assigned to the live stream. You receive this ID when creating the live stream. | `String` | -                 | Any valid string (max 255 characters) |
 | `accessPolicy` (optional) | Determines if access to the streamed content is kept private or available to all.                     | `String` | `"public"`        | `"public"`, `"private"`               |
 
-### **Example Request**
+### Example Request:
 
 ```javascript
 // Generate a live stream playback ID for an existing stream
@@ -27,14 +27,14 @@ console.log("Generated Live Stream Playback ID:", generateLiveStreamPlaybackId);
 
 The `deleteLiveStreamPlaybackId` method allows you to delete a specific playback ID for a live stream. To use this method, you need to provide both the `streamId` of the live stream and the `playbackId` of the stream you wish to delete. This method will permanently remove the playback ID for that specific live stream.
 
-### **Parameter Details**
+### Parameter Details:
 
 | **Parameter**           | **Description**                                                                                       | **Type** | **Accepted Values**                   |
 | ----------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------------------------------------- |
 | `streamId` (required)   | The unique identifier assigned to the live stream. You receive this ID when creating the live stream. | `String` | Any valid string (max 255 characters) |
 | `playbackId` (required) | The unique identifier for the playback ID associated with the live stream.                            | `String` | Any valid string (max 255 characters) |
 
-### **Example Request**
+### Example Request:
 
 ```javascript
 // Delete a playback ID for an existing live stream
@@ -52,14 +52,14 @@ console.log("Deleted Live Stream Playback ID:", deleteLiveStreamPlaybackId);
 
 The `getLiveStreamPlaybackPolicy` method allows you to retrieve the playback policy for a specific live stream playback ID. You need to provide both the `streamId` of the live stream and the `playbackId` associated with that stream to fetch the playback policy.
 
-### **Parameter Details**
+### Parameter Details:
 
 | **Parameter**           | **Description**                                                                                       | **Type** | **Accepted Values**                   |
 | ----------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------------------------------------- |
 | `streamId` (required)   | The unique identifier assigned to the live stream. You receive this ID when creating the live stream. | `String` | Any valid string (max 255 characters) |
 | `playbackId` (required) | The unique identifier for the playback ID associated with the live stream.                            | `String` | Any valid string (max 255 characters) |
 
-### **Example Request**
+### Example Request:
 
 ```javascript
 // Retrieve the playback policy for a specific live stream playback ID

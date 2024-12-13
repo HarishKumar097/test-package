@@ -4,7 +4,7 @@ The `uploadMediaFromUrl` method allows you to upload media directly from a URL. 
 
 In the response, a unique `id` is returned, which serves as the `mediaId` for managing further media operations such as retrieving media details, generating playback IDs, updating metadata, or deleting the asset.
 
-## Parameters
+### Parameters Details:
 
 | **Parameter**             | **Description**                                                                                             | **Type** | **Accepted Values**                                               |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------- |
@@ -45,7 +45,7 @@ If the media type is `"watermark"`, the following parameters are required:
 | `height`      | Height of the watermark in pixels or percentage (e.g., `20%`, `200px`). | String   | Any valid string for height (e.g., `20%`, `200px`).                       |
 | `opacity`     | Opacity of the watermark in percentage (0-100%).                        | String   | Any integer value from `0` to `100`                                       |
 
-##### Placement Object for Watermark
+#### Placement Object for Watermark
 
 | **Parameter** | **Description**                                                                    | **Type** | **Accepted Values**                                                |
 | ------------- | ---------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------ |
@@ -64,7 +64,7 @@ If the media type is `"audio"`, the following parameters are relevant:
 | `swapTrackUrl` | URL of the audio track to replace the existing audio in the video. | String   | Valid URL path for the new audio track (MP3, WAV, etc.).                                            |
 | `imposeTracks` | List of additional audio tracks to overlay on the video.           | Array    | Array of audio track objects with `url`, `startTime`, `endTime`, `fadeInLevel`, and `fadeOutLevel`. |
 
-##### Impose Tracks Object for Audio
+#### Impose Tracks Object for Audio
 
 | **Parameter**  | **Description**                                                            | **Type** | **Accepted Values**                                           |
 | -------------- | -------------------------------------------------------------------------- | -------- | ------------------------------------------------------------- |
@@ -88,7 +88,7 @@ If the media type is `"audio"`, the following parameters are relevant:
 | `name` (required) | Name of the language for the subtitles.                     | String   | Any string, such as `"English"`, `"French"`, `"Spanish"`, etc. |
 | `languageCode`    | BCP 47 compliant language code (e.g., `"en"` for English).  | String   | Any valid BCP 47 language code (e.g., `"en"`, `"fr"`, `"es"`)  |
 
-### Example Request
+### Example Request:
 
 ```javascript
 const uploadMedia = await fastpix.uploadMediaFromUrl({
@@ -165,7 +165,7 @@ This method allows you to upload a video file directly from your local device to
 
 In the response, a unique `uploadId` is returned, which serves as the `mediaId` for managing further media operations such as retrieving media details, generating playback IDs, updating metadata, or deleting the asset.
 
-## Parameters
+### Parameters Details:
 
 | **Parameter**                  | **Description**                                                                                           | **Type** | **Accepted Values**    |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- | ---------------------- |
@@ -212,7 +212,7 @@ If the media type is `"watermark"`, the following parameters are required:
 | `height`      | Height of the watermark in pixels or percentage (e.g., `20%`, `200px`). | String   | Any valid string for height (e.g., `20%`, `200px`).                       |
 | `opacity`     | Opacity of the watermark in percentage (0-100%).                        | String   | Any integer value from `0` to `100`                                       |
 
-##### Placement Object for Watermark
+#### Placement Object for Watermark
 
 | **Parameter** | **Description**                                                                    | **Type** | **Accepted Values**                                                |
 | ------------- | ---------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------ |
@@ -231,7 +231,7 @@ If the media type is `"audio"`, the following parameters are relevant:
 | `swapTrackUrl` | URL of the audio track to replace the existing audio in the video. | String   | Valid URL path for the new audio track (MP3, WAV, etc.).                                            |
 | `imposeTracks` | List of additional audio tracks to overlay on the video.           | Array    | Array of audio track objects with `url`, `startTime`, `endTime`, `fadeInLevel`, and `fadeOutLevel`. |
 
-##### Impose Tracks Object for Audio
+#### Impose Tracks Object for Audio
 
 | **Parameter**  | **Description**                                                            | **Type** | **Accepted Values**                                           |
 | -------------- | -------------------------------------------------------------------------- | -------- | ------------------------------------------------------------- |
@@ -255,7 +255,7 @@ If the media type is `"audio"`, the following parameters are relevant:
 | `name` (required) | Name of the language for the subtitles.                     | String   | Any string, such as `"English"`, `"French"`, `"Spanish"`, etc. |
 | `languageCode`    | BCP 47 compliant language code (e.g., `"en"` for English).  | String   | Any valid BCP 47 language code (e.g., `"en"`, `"fr"`, `"es"`)  |
 
-## Example Request Body
+### Example Request:
 
 ```javascript
 const uploadMedia = await fastpix.uploadMediaFromUrl({
