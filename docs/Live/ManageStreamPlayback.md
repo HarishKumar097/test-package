@@ -4,10 +4,10 @@ The `generateLiveStreamPlaybackId` method allows you to generate a playback ID f
 
 ### **Parameter Details**
 
-| **Parameter**   | **Description**                                                              | **Type**   | **Default Value** | **Accepted Values**                |
-| --------------- | ---------------------------------------------------------------------------- | --------- | ----------------- | ---------------------------------- |
-| `streamId` (required) | The unique identifier assigned to the live stream. You receive this ID when creating the live stream. | `String`  | -                 | Any valid string (max 255 characters) |
-| `accessPolicy` (optional) | Determines if access to the streamed content is kept private or available to all. | `String`  | `"public"`        | `"public"`, `"private"`            |
+| **Parameter**             | **Description**                                                                                       | **Type** | **Default Value** | **Accepted Values**                   |
+| ------------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ----------------- | ------------------------------------- |
+| `streamId` (required)     | The unique identifier assigned to the live stream. You receive this ID when creating the live stream. | `String` | -                 | Any valid string (max 255 characters) |
+| `accessPolicy` (optional) | Determines if access to the streamed content is kept private or available to all.                     | `String` | `"public"`        | `"public"`, `"private"`               |
 
 ### **Example Request**
 
@@ -21,7 +21,7 @@ const generateLiveStreamPlaybackId = await fastpix.generateLiveStreamPlaybackId(
 console.log("Generated Live Stream Playback ID:", generateLiveStreamPlaybackId);
 ```
 
---- 
+---
 
 # Method: deleteLiveStreamPlaybackId
 
@@ -29,10 +29,10 @@ The `deleteLiveStreamPlaybackId` method allows you to delete a specific playback
 
 ### **Parameter Details**
 
-| **Parameter**   | **Description**                                                              | **Type**   | **Accepted Values**                |
-| --------------- | ---------------------------------------------------------------------------- | --------- | ---------------------------------- |
-| `streamId` (required) | The unique identifier assigned to the live stream. You receive this ID when creating the live stream. | `String`  | Any valid string (max 255 characters) |
-| `playbackId` (required) | The unique identifier for the playback ID associated with the live stream. | `String`  | Any valid string (max 255 characters) |
+| **Parameter**           | **Description**                                                                                       | **Type** | **Accepted Values**                   |
+| ----------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------------------------------------- |
+| `streamId` (required)   | The unique identifier assigned to the live stream. You receive this ID when creating the live stream. | `String` | Any valid string (max 255 characters) |
+| `playbackId` (required) | The unique identifier for the playback ID associated with the live stream.                            | `String` | Any valid string (max 255 characters) |
 
 ### **Example Request**
 
@@ -54,10 +54,10 @@ The `getLiveStreamPlaybackPolicy` method allows you to retrieve the playback pol
 
 ### **Parameter Details**
 
-| **Parameter**   | **Description**                                                              | **Type**   | **Accepted Values**                |
-| --------------- | ---------------------------------------------------------------------------- | --------- | ---------------------------------- |
-| `streamId` (required)   | The unique identifier assigned to the live stream. You receive this ID when creating the live stream. | `String`   | Any valid string (max 255 characters) |
-| `playbackId` (required) | The unique identifier for the playback ID associated with the live stream. | `String`   | Any valid string (max 255 characters) |
+| **Parameter**           | **Description**                                                                                       | **Type** | **Accepted Values**                   |
+| ----------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------------------------------------- |
+| `streamId` (required)   | The unique identifier assigned to the live stream. You receive this ID when creating the live stream. | `String` | Any valid string (max 255 characters) |
+| `playbackId` (required) | The unique identifier for the playback ID associated with the live stream.                            | `String` | Any valid string (max 255 characters) |
 
 ### **Example Request**
 

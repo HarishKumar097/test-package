@@ -1,11 +1,9 @@
 # Manage Media Methods
 
-To manage your media assets, the **`mediaId`** is the mandatory parameter required for most methods. This `mediaId` is the unique identifier for a media asset and is generated during the media upload process. 
+To manage your media assets, the **`mediaId`** is the mandatory parameter required for most methods. This `mediaId` is the unique identifier for a media asset and is generated during the media upload process.
 
 - If you upload a media asset using **`uploadMediaFromUrl`**, the `id` of the media asset is returned as part of the response.
 - If you upload a media asset from a local device using **`uploadMediaFromDevice`**, the `uploadId` is returned as part of the response.
-
-You will need this `mediaId` to perform operations such as retrieving, updating, deleting, or fetching detailed information about your media asset.
 
 ---
 
@@ -15,19 +13,19 @@ The `getAllMediaAssets` method allows you to fetch a list of all media assets. T
 
 ### **Parameters**
 
-| **Parameter**  | **Description**                                                   | **Type**   | **Default Value** | **Accepted Values**                             |
-| -------------- | ----------------------------------------------------------------- | ---------  | ------------------ | ----------------------------------------------- |
-| `limit`        | Specifies the maximum number of items to display per page.        | `Number`   | `10`               | 1 to 50                                           |
-| `offset`       | Determines the starting point for data retrieval in a paginated list. | `Number`   | `1`                | Any positive integer (e.g., `1`, `5`, `10`)       |
-| `orderBy`      | Sorts the values in the list. The values can be arranged in descending or ascending order. | `String`   | `desc`             | `"desc"`, `"asc"`                               |
+| **Parameter** | **Description**                                                                            | **Type** | **Default Value** | **Accepted Values**                         |
+| ------------- | ------------------------------------------------------------------------------------------ | -------- | ----------------- | ------------------------------------------- |
+| `limit`       | Specifies the maximum number of items to display per page.                                 | `Number` | `10`              | 1 to 50                                     |
+| `offset`      | Determines the starting point for data retrieval in a paginated list.                      | `Number` | `1`               | Any positive integer (e.g., `1`, `5`, `10`) |
+| `orderBy`     | Sorts the values in the list. The values can be arranged in descending or ascending order. | `String` | `desc`            | `"desc"`, `"asc"`                           |
 
 ### **Example Request with Custom Parameters:**
 
 ```javascript
 const mediaQueryParams = {
-  limit: 20,    // Number of assets to fetch in one request (between 1 and 50)
-  offset: 5,    // Pagination starting position
-  orderBy: "asc"  // Sorting order of the assets ("asc" for ascending)
+  limit: 20, // Number of assets to fetch in one request (between 1 and 50)
+  offset: 5, // Pagination starting position
+  orderBy: "asc", // Sorting order of the assets ("asc" for ascending)
 };
 
 const mediaAssets = await fastpix.getAllMediaAssets(mediaQueryParams);
@@ -42,9 +40,9 @@ The `getMediaAssetById` method allows you to retrieve a specific media asset by 
 
 ### **Parameters**
 
-| **Parameter**   | **Description**                                                               | **Type**   | **Required** | **Accepted Values**               |
-| --------------- | ----------------------------------------------------------------------------- | ---------  | ------------ | ---------------------------------- |
-| `mediaId` (required)        | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters. | `String`   | Yes          | Any valid string (up to 255 chars) |
+| **Parameter**        | **Description**                                                                                | **Type** | **Required** | **Accepted Values**                |
+| -------------------- | ---------------------------------------------------------------------------------------------- | -------- | ------------ | ---------------------------------- |
+| `mediaId` (required) | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters. | `String` | Yes          | Any valid string (up to 255 chars) |
 
 ### **Example Request:**
 
@@ -66,17 +64,17 @@ The `updateMediaAsset` method allows you to update metadata or other properties 
 
 ### **Parameters**
 
-| **Parameter**   | **Description**                                                               | **Type**   | **Accepted Values**               |
-| --------------- | ----------------------------------------------------------------------------- | ---------  | ---------------------------------- |
-| `mediaId`  (required)       | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters. | `String` | Any valid string (up to 255 chars) |
-| `metadata` (required)       | Metadata key-value pairs to be updated for the media asset.                   | `Object` | Key-value pairs (max 10 entries)  |
+| **Parameter**         | **Description**                                                                                | **Type** | **Accepted Values**                |
+| --------------------- | ---------------------------------------------------------------------------------------------- | -------- | ---------------------------------- |
+| `mediaId` (required)  | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters. | `String` | Any valid string (up to 255 chars) |
+| `metadata` (required) | Metadata key-value pairs to be updated for the media asset.                                    | `Object` | Key-value pairs (max 10 entries)   |
 
 ### **Metadata Object**
 
-| **Parameter**   | **Description**                                                   | **Type**   | **Accepted Values** |
-| --------------- | ----------------------------------------------------------------- | ---------  | -------------------- |
-| `key`           | A key for the metadata entry (max 255 characters).               | `String`   | Any string (up to 255 characters). |
-| `value`         | The value for the specified metadata key (max 255 characters).    | `String`   | Any string (up to 255 characters). |
+| **Parameter** | **Description**                                                | **Type** | **Accepted Values**                |
+| ------------- | -------------------------------------------------------------- | -------- | ---------------------------------- |
+| `key`         | A key for the metadata entry (max 255 characters).             | `String` | Any string (up to 255 characters). |
+| `value`       | The value for the specified metadata key (max 255 characters). | `String` | Any string (up to 255 characters). |
 
 You can add up to 10 metadata entries to the `metadata` object. Each entry is a key-value pair. This allows you to tag your media asset for easier identification or categorization.
 
@@ -91,8 +89,8 @@ const mediaAssetToUpdate = {
 // Define the payload with the updates to be applied to the media asset.
 const updatePayload = {
   metadata: {
-    "key": "value", // Replace "key" and "value" with actual metadata entries.
-    "category": "nature" // Example of another metadata entry.
+    key: "value", // Replace "key" and "value" with actual metadata entries.
+    category: "nature", // Example of another metadata entry.
   },
 };
 
@@ -111,9 +109,9 @@ The `deleteMediaAsset` method allows you to delete a specific media asset by its
 
 ### **Parameters**
 
-| **Parameter**   | **Description**                                                               | **Type**   | **Accepted Values**             |
-| --------------- | ----------------------------------------------------------------------------- | --------- | ------------------------------ |
-| `mediaId`  (required)       | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters. | `String`  | Any valid string (up to 255 characters) |
+| **Parameter**        | **Description**                                                                                | **Type** | **Accepted Values**                     |
+| -------------------- | ---------------------------------------------------------------------------------------------- | -------- | --------------------------------------- |
+| `mediaId` (required) | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters. | `String` | Any valid string (up to 255 characters) |
 
 ### **Example Request:**
 
@@ -135,9 +133,9 @@ The `getMediaAssetInfo` method allows you to retrieve detailed information about
 
 ### **Parameters**
 
-| **Parameter**   | **Description**                                                              | **Type**   | **Accepted Values**             |
-| --------------- | ---------------------------------------------------------------------------- | --------- | ------------------------------ |
-| `mediaId` (required)        | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters. | `String`  | Any valid string (up to 255 characters) |
+| **Parameter**        | **Description**                                                                                | **Type** | **Accepted Values**                     |
+| -------------------- | ---------------------------------------------------------------------------------------------- | -------- | --------------------------------------- |
+| `mediaId` (required) | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters. | `String` | Any valid string (up to 255 characters) |
 
 ### **Example Request:**
 

@@ -1,6 +1,6 @@
 # Method: initiateLiveStreamSimulcast
 
-The `initiateLiveStreamSimulcast` method allows you to create a new simulcast for an existing live stream. Provide the `streamId` of the live stream and a simulcast payload containing the URL and stream key required to start streaming to third-party platforms. 
+The `initiateLiveStreamSimulcast` method allows you to create a new simulcast for an existing live stream. Provide the `streamId` of the live stream and a simulcast payload containing the URL and stream key required to start streaming to third-party platforms.
 
 In the response `simulcastId` must be retained for managing future operations on the simulcast, such as updating or deleting it.
 
@@ -8,16 +8,16 @@ In the response `simulcastId` must be retained for managing future operations on
 
 #### **Simulcast Payload**
 
-| **Parameter**   | **Description**                                                              | **Type**   | **Accepted Values**                |
-| --------------- | ---------------------------------------------------------------------------- | --------- | ---------------------------------- |
-| `url` (required) | The RTMP URL, combined with the application name, is crucial for connecting to third-party live streaming services and transmitting the live stream. | `String`   | Any valid RTMP URL (e.g., `rtmps://live.fastpix.io:443/live`) |
-| `streamKey` (required) | A unique stream key that allows the user to start streaming on a third-party platform. This key is used in the RTMP stream configuration. | `String`   | Any valid stream key (max 255 characters) |
+| **Parameter**          | **Description**                                                                                                                                      | **Type** | **Accepted Values**                                           |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------- |
+| `url` (required)       | The RTMP URL, combined with the application name, is crucial for connecting to third-party live streaming services and transmitting the live stream. | `String` | Any valid RTMP URL (e.g., `rtmps://live.fastpix.io:443/live`) |
+| `streamKey` (required) | A unique stream key that allows the user to start streaming on a third-party platform. This key is used in the RTMP stream configuration.            | `String` | Any valid stream key (max 255 characters)                     |
 
 #### **Live Stream Parameters**
 
-| **Parameter**   | **Description**                                                              | **Type**   | **Accepted Values**                |
-| --------------- | ---------------------------------------------------------------------------- | --------- | ---------------------------------- |
-| `streamId` (required)   | The unique identifier assigned to the live stream. This ID is generated during the creation of the live stream. | `String`   | Any valid string (max 255 characters) |
+| **Parameter**         | **Description**                                                                                                 | **Type** | **Accepted Values**                   |
+| --------------------- | --------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------- |
+| `streamId` (required) | The unique identifier assigned to the live stream. This ID is generated during the creation of the live stream. | `String` | Any valid string (max 255 characters) |
 
 ### **Example Request**
 
@@ -25,7 +25,8 @@ In the response `simulcastId` must be retained for managing future operations on
 // Define the simulcast payload with the URL and stream key
 const simulcastPayload = {
   url: "rtmps://live.fastpix.io:443/live", // RTMP URL for the third-party platform
-  streamKey: "46c3457fa8a579b2d4da64125a2b6e83ka09f3e958c16ed00e85bfe798abd9845", // Replace with actual stream key
+  streamKey:
+    "46c3457fa8a579b2d4da64125a2b6e83ka09f3e958c16ed00e85bfe798abd9845", // Replace with actual stream key
 };
 
 // Initiate the simulcast for an existing live stream
@@ -39,7 +40,7 @@ const generateSimulcast = await fastpix.initiateLiveStreamSimulcast(
 console.log("Generate Simulcast:", generateSimulcast);
 ```
 
---- 
+---
 
 # Method: getLiveStreamSimulcast
 
@@ -47,10 +48,10 @@ The `getLiveStreamSimulcast` method allows you to retrieve details of a specific
 
 ### **Parameter Details**
 
-| **Parameter**   | **Description**                                                                  | **Type**   | **Accepted Values**                |
-| --------------- | -------------------------------------------------------------------------------  | --------- | ---------------------------------- |
-| `streamId` (required)   | The unique identifier assigned to the live stream. This ID is generated during the creation of the live stream. | `String`   | Any valid string (max 255 characters) |
-| `simulcastId` (required) | The unique identifier assigned to the simulcast stream. FastPix generates this ID when the simulcast is created. | `String`   | Any valid string (max 255 characters) |
+| **Parameter**            | **Description**                                                                                                  | **Type** | **Accepted Values**                   |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------- |
+| `streamId` (required)    | The unique identifier assigned to the live stream. This ID is generated during the creation of the live stream.  | `String` | Any valid string (max 255 characters) |
+| `simulcastId` (required) | The unique identifier assigned to the simulcast stream. FastPix generates this ID when the simulcast is created. | `String` | Any valid string (max 255 characters) |
 
 ### **Example Request**
 
@@ -72,12 +73,12 @@ The `updateLiveStreamSimulcast` method allows you to update the configuration of
 
 ### **Parameter Details**
 
-| **Parameter**   | **Description**                                                                  | **Type**   | **Accepted Values**                |
-| --------------- | -------------------------------------------------------------------------------  | --------- | ---------------------------------- |
-| `streamId` (required)   | The unique identifier assigned to the live stream. This ID is generated during the creation of the live stream. | `String`   | Any valid string (max 255 characters) |
-| `simulcastId` (required) | The unique identifier assigned to the simulcast stream. FastPix generates this ID when the simulcast is created. | `String`   | Any valid string (max 255 characters) |
-| `isEnabled`       | Determines if the simulcast stream is enabled or disabled. Set to `false` to disable the simulcast. | `Boolean`   | `true` (enabled), `false` (disabled)         |
-| `metadata`        | Arbitrary user-supplied metadata that will be included in the simulcast details. Max 255 characters per key and value, up to 10 entries. | `Object`    | Any valid key-value pair (max 255 characters per key and value) |
+| **Parameter**            | **Description**                                                                                                                          | **Type**  | **Accepted Values**                                             |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | --------- | --------------------------------------------------------------- |
+| `streamId` (required)    | The unique identifier assigned to the live stream. This ID is generated during the creation of the live stream.                          | `String`  | Any valid string (max 255 characters)                           |
+| `simulcastId` (required) | The unique identifier assigned to the simulcast stream. FastPix generates this ID when the simulcast is created.                         | `String`  | Any valid string (max 255 characters)                           |
+| `isEnabled`              | Determines if the simulcast stream is enabled or disabled. Set to `false` to disable the simulcast.                                      | `Boolean` | `true` (enabled), `false` (disabled)                            |
+| `metadata`               | Arbitrary user-supplied metadata that will be included in the simulcast details. Max 255 characters per key and value, up to 10 entries. | `Object`  | Any valid key-value pair (max 255 characters per key and value) |
 
 ### **Example Request**
 
@@ -113,10 +114,10 @@ The `deleteLiveStreamSimulcast` method allows you to delete a specific simulcast
 
 #### Required Parameters:
 
-| **Parameter**   | **Description**                                                              | **Type**   | **Accepted Values**                |
-| --------------- | ---------------------------------------------------------------------------- | --------- | ---------------------------------- |
-| `streamId` (required)   | The unique identifier assigned to the live stream. This ID is generated when the stream is created. | `String`   | Any valid string (max 255 characters) |
-| `simulcastId` (required) | The unique identifier assigned to the simulcast stream. This ID is generated when the simulcast is created. | `String`   | Any valid string (max 255 characters) |
+| **Parameter**            | **Description**                                                                                             | **Type** | **Accepted Values**                   |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------- |
+| `streamId` (required)    | The unique identifier assigned to the live stream. This ID is generated when the stream is created.         | `String` | Any valid string (max 255 characters) |
+| `simulcastId` (required) | The unique identifier assigned to the simulcast stream. This ID is generated when the simulcast is created. | `String` | Any valid string (max 255 characters) |
 
 ### **Example Request**
 

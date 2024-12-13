@@ -12,24 +12,26 @@ The `getAllLiveStreams` method allows you to fetch a list of all live streams. Y
 
 The method accepts the following query parameters:
 
-| **Parameter**   | **Description**                                                   | **Type**   | **Default Value** | **Accepted Values**                             |
-| --------------- | ----------------------------------------------------------------- | ---------  | ------------------ | ----------------------------------------------- |
-| `limit`         | Specifies the maximum number of items to display per page.        | `Number`   | `10`               | 1 to 50                                           |
-| `offset`        | Determines the starting point for data retrieval in a paginated list. | `Number`   | `1`                | Any positive integer (e.g., `1`, `5`, `10`)       |
-| `orderBy`       | Sorts the list of streams. The list can be arranged in ascending or descending order. | `String`   | `desc`             | `"desc"`, `"asc"`                                |
+| **Parameter** | **Description**                                                                       | **Type** | **Default Value** | **Accepted Values**                         |
+| ------------- | ------------------------------------------------------------------------------------- | -------- | ----------------- | ------------------------------------------- |
+| `limit`       | Specifies the maximum number of items to display per page.                            | `Number` | `10`              | 1 to 50                                     |
+| `offset`      | Determines the starting point for data retrieval in a paginated list.                 | `Number` | `1`               | Any positive integer (e.g., `1`, `5`, `10`) |
+| `orderBy`     | Sorts the list of streams. The list can be arranged in ascending or descending order. | `String` | `desc`            | `"desc"`, `"asc"`                           |
 
 ### **Example Request**
 
 ```javascript
 // Define pagination settings for retrieving live streams
 const getAllLiveStreamPagination = {
-  limit: 10,      // Limit the number of live streams retrieved (1 to 50)
-  offset: 1,      // Skip a specified number of streams for pagination
+  limit: 10, // Limit the number of live streams retrieved (1 to 50)
+  offset: 1, // Skip a specified number of streams for pagination
   orderBy: "asc", // Sort the results in ascending order
 };
 
 // Fetch the live streams using the defined parameters
-const getAllLiveStreams = await fastpix.getAllLiveStreams(getAllLiveStreamPagination);
+const getAllLiveStreams = await fastpix.getAllLiveStreams(
+  getAllLiveStreamPagination
+);
 console.log("All Live Streams:", getAllLiveStreams);
 ```
 
@@ -41,9 +43,9 @@ The `getLiveStreamById` method allows you to retrieve the details of a specific 
 
 ### **Parameter Details**
 
-| **Parameter**   | **Description**                                                               | **Type**   | **Accepted Values**              |
-| --------------- | ----------------------------------------------------------------------------- | --------- | -------------------------------- |
-| `streamId` (required) | The unique identifier assigned to the live stream. You receive this ID upon stream creation. | `String`   | Any valid string (max 255 characters) |
+| **Parameter**         | **Description**                                                                              | **Type** | **Accepted Values**                   |
+| --------------------- | -------------------------------------------------------------------------------------------- | -------- | ------------------------------------- |
+| `streamId` (required) | The unique identifier assigned to the live stream. You receive this ID upon stream creation. | `String` | Any valid string (max 255 characters) |
 
 ### **Example Request**
 
@@ -56,7 +58,7 @@ const getLiveStreamById = await fastpix.getLiveStreamById({
 console.log("Live Stream Details:", getLiveStreamById);
 ```
 
---- 
+---
 
 # Method: updateLiveStream
 
@@ -64,11 +66,11 @@ The `updateLiveStream` method allows you to update the configuration of a live s
 
 ### **Parameter Details**
 
-| **Parameter**   | **Description**                                                               | **Type**   | **Accepted Values**               |
-| --------------- | ----------------------------------------------------------------------------- | --------- | ---------------------------------- |
-| `streamId` (required)   | The unique identifier assigned to the live stream. You receive this ID upon stream creation. | `String`   | Any valid string (max 255 characters) |
-| `metadata` (optional)    | Optional metadata to tag the live stream with key-value pairs. You can add up to 10 key-value pairs, and each key and value can have a maximum of 255 characters. | `Object`   | Any valid key-value pair (max 255 characters per key and value) |
-| `reconnectWindow` (optional) | The time (in seconds) FastPix will wait before ending the stream in case of a disruption. This value can range from 60 to 1800 seconds. | `Integer`  | 60 to 1800 (seconds)              |
+| **Parameter**                | **Description**                                                                                                                                                   | **Type**  | **Accepted Values**                                             |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | --------------------------------------------------------------- |
+| `streamId` (required)        | The unique identifier assigned to the live stream. You receive this ID upon stream creation.                                                                      | `String`  | Any valid string (max 255 characters)                           |
+| `metadata` (optional)        | Optional metadata to tag the live stream with key-value pairs. You can add up to 10 key-value pairs, and each key and value can have a maximum of 255 characters. | `Object`  | Any valid key-value pair (max 255 characters per key and value) |
+| `reconnectWindow` (optional) | The time (in seconds) FastPix will wait before ending the stream in case of a disruption. This value can range from 60 to 1800 seconds.                           | `Integer` | 60 to 1800 (seconds)                                            |
 
 ### **Example Request**
 
@@ -98,9 +100,9 @@ The `deleteLiveStream` method allows you to delete a live stream by its unique `
 
 ### **Parameter Details**
 
-| **Parameter**   | **Description**                                                               | **Type**   | **Accepted Values**               |
-| --------------- | ----------------------------------------------------------------------------- | --------- | ---------------------------------- |
-| `streamId` (required)   | The unique identifier assigned to the live stream. You receive this ID when creating the live stream. | `String`   | Any valid string (max 255 characters) |
+| **Parameter**         | **Description**                                                                                       | **Type** | **Accepted Values**                   |
+| --------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------------------------------------- |
+| `streamId` (required) | The unique identifier assigned to the live stream. You receive this ID when creating the live stream. | `String` | Any valid string (max 255 characters) |
 
 ### **Example Request**
 
@@ -111,4 +113,4 @@ const deleteLiveStream = await fastpix.deleteLiveStream({
 });
 
 console.log("Deleted Live Stream:", deleteLiveStream);
-
+```
