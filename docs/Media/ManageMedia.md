@@ -1,9 +1,6 @@
 # Manage Media Methods
 
-To manage your media assets, the **`mediaId`** is the mandatory parameter required for most methods. This `mediaId` is the unique identifier for a media asset and is generated during the media upload process.
-
-- If you upload a media asset using **`uploadMediaFromUrl`**, the `id` of the media asset is returned as part of the response.
-- If you upload a media asset from a local device using **`uploadMediaFromDevice`**, the `uploadId` is returned as part of the response.
+To manage your media assets, you’ll need the `mediaId`, which is a unique identifier assigned to each media asset.
 
 ---
 
@@ -36,7 +33,7 @@ console.log("Fetched Media Assets:", mediaAssets);
 
 # Method: getMediaAssetById()
 
-The `getMediaAssetById` method allows you to retrieve a specific media asset by its unique `mediaId`. You must provide the `mediaId` of the asset you want to fetch.
+The `getMediaAssetById` method allows you to retrieve a specific media asset by its unique `mediaId`.
 
 ### Parameters Details:
 
@@ -60,7 +57,7 @@ console.log("Retrieved media asset by ID:", getMediaAsset);
 
 # Method: updateMediaAsset()
 
-The `updateMediaAsset` method allows you to update metadata or other properties of a specific media asset. You must provide the `mediaId` of the asset you wish to update, along with the metadata or other fields to be updated.
+The `updateMediaAsset` method lets you update a media asset's metadata by providing its `mediaId`.
 
 ### Parameters Details:
 
@@ -105,7 +102,7 @@ console.log("Updated Media Asset:", updateMediaAsset);
 
 # Method: deleteMediaAsset()
 
-The `deleteMediaAsset` method allows you to delete a specific media asset by its unique ID. You must provide the `mediaId` of the asset to delete.
+The `deleteMediaAsset` method deletes a media asset by its unique `mediaId`.
 
 ### Parameters Details:
 
@@ -129,7 +126,7 @@ console.log("Deleted Media Asset:", deleteMediaAsset);
 
 # Method: getMediaAssetInfo()
 
-The `getMediaAssetInfo` method allows you to retrieve detailed information about the media inputs associated with a specific media asset. You can use this endpoint to verify the media file’s input URL, track creation status, and container format. The `mediaId` (either `uploadId` or `id`) must be provided to fetch the information.
+The `getMediaAssetInfo` method allows you to retrieve detailed information about the media inputs associated with a specific media asset. You can use this method to verify the media file’s input URL, track creation status, and container format. The `mediaId` must be provided to fetch the information.
 
 ### Parameters Details:
 

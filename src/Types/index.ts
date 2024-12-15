@@ -19,7 +19,7 @@ export interface AccessPolicy {
 // Interface for media properties
 export interface MediaProps {
   mediaId?: string;
-  playbackId?: string;
+  playbackId?: string[];
 }
 
 // Interface for update operations with dynamic key-value pairs
@@ -30,7 +30,7 @@ export interface UpdateObject {
 // Interface for live stream properties
 export interface LiveStreamProps {
   streamId?: string;
-  playbackId?: string;
+  playbackId?: string[];
 }
 
 // Interface for simulcast properties

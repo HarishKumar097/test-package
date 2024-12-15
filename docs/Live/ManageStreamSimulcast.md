@@ -1,12 +1,12 @@
 # Manage Live Stream Simulcast
 
-Simulcasting allows you to stream your live content to multiple platforms simultaneously, broadening your reach and audience. A suite of methods is available to manage live stream simulcasts, including creating a new simulcast, retrieving its details, updating its configuration, and deleting an existing simulcast. 
+Simulcasting allows you to stream your live content to multiple platforms simultaneously. A suite of methods is available to manage live stream simulcasts, including creating a new simulcast, retrieving its details, updating its configuration, and deleting an existing simulcast. 
 
 To manage simulcasts effectively, you’ll need the `streamId` (generated when you initiate a live stream) and the `simulcastId` (generated when the simulcast is created). These identifiers are crucial for linking simulcast operations to the correct live stream and simulcast.
 
 # Method: initiateLiveStreamSimulcast()
 
-The `initiateLiveStreamSimulcast` method allows you to create a new simulcast for an existing live stream. Provide the `streamId` of the live stream and a simulcast payload containing the URL and stream key required to start streaming to third-party platforms.
+The `initiateLiveStreamSimulcast` method allows you to create a new simulcast for an existing live stream. Provide the `streamId` of the live stream and a simulcast payload containing the URL and stream key required to start streaming.
 
 In the response `simulcastId` must be retained for managing future operations on the simulcast, such as updating or deleting it.
 
@@ -43,7 +43,7 @@ console.log("Generate Simulcast:", generateSimulcast);
 
 # Method: getLiveStreamSimulcast()
 
-The `getLiveStreamSimulcast` method allows you to retrieve details of a specific simulcast for a live stream. To use this method, you need to provide both the `streamId` (the unique identifier for the live stream) and the `simulcastId` (the unique identifier for the simulcast stream).
+The `getLiveStreamSimulcast` method allows you to retrieve details of a specific simulcast for a live stream. To use this method, you need to provide both the `streamId` and the `simulcastId`.
 
 ### Parameter Details:
 
@@ -68,7 +68,7 @@ console.log("Live Stream Simulcast Details:", getLiveSimulcast);
 
 # Method: updateLiveStreamSimulcast()
 
-The `updateLiveStreamSimulcast` method allows you to update the configuration of a simulcast stream for a live stream. To use this method, you need to provide the `streamId` (the unique identifier for the live stream), `simulcastId` (the unique identifier for the simulcast stream), and the fields you wish to update, such as `isEnabled` and `metadata`.
+The `updateLiveStreamSimulcast` method allows you to update the configuration of a simulcast stream for a live stream. To use this method, you need to provide the `streamId`, `simulcastId`, and specify the fields to be updated, including `isEnabled` and `metadata`.
 
 ### Parameter Details:
 
@@ -107,7 +107,7 @@ console.log("Updated Live Stream Simulcast:", updateLiveSimulcast);
 
 # Method: deleteLiveStreamSimulcast()
 
-The `deleteLiveStreamSimulcast` method allows you to delete a specific simulcast associated with a live stream. To remove a simulcast, you need to provide both the `streamId` (unique identifier of the live stream) and `simulcastId` (unique identifier of the simulcast) that you want to delete.
+The `deleteLiveStreamSimulcast` method allows you to delete a specific simulcast associated with a live stream. To remove a simulcast, you need to provide both the `streamId` and `simulcastId` that you want to delete.
 
 ### Parameter Details:
 

@@ -96,7 +96,7 @@ class Media {
 
   // Retrieves details of a specific media asset.
   async getAsset(props: MediaProps, requestObj: RequestObject) {
-    const path = `${this.mediaPath}/${props?.mediaId}`;
+    const path = `${this.mediaPath}/${props?.mediaId || ""}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -110,7 +110,7 @@ class Media {
 
   // Retrieves detailed information about a media asset's input.
   async getAssetInfo(props: MediaProps, requestObj: RequestObject) {
-    const path = `${this.mediaPath}/${props?.mediaId}/input-info`;
+    const path = `${this.mediaPath}/${props?.mediaId || ""}/input-info`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -131,7 +131,7 @@ class Media {
     updateObject: UpdateObject,
     requestObj: RequestObject
   ) {
-    const path = `${this.mediaPath}/${props?.mediaId}`;
+    const path = `${this.mediaPath}/${props?.mediaId || ""}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -151,7 +151,7 @@ class Media {
 
   // Deletes a media asset.
   async deleteAsset(props: MediaProps, requestObj: RequestObject) {
-    const path = `${this.mediaPath}/${props?.mediaId}`;
+    const path = `${this.mediaPath}/${props?.mediaId || ""}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -172,7 +172,7 @@ class Media {
     playbackPolicy: AccessPolicy,
     requestObj: RequestObject
   ) {
-    const path = `${this.mediaPath}/${props?.mediaId}/playback-ids`;
+    const path = `${this.mediaPath}/${props?.mediaId || ""}/playback-ids`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -192,8 +192,14 @@ class Media {
 
   // Removes a playback ID from a media asset.
   async removeMediaPlaybackId(props: MediaProps, requestObj: RequestObject) {
-    const path = `${this.mediaPath}/${props?.mediaId}/playback-ids`;
-    const queryParams = `?playbackId=${props?.playbackId}`;
+    const path = `${this.mediaPath}/${props?.mediaId || ""}/playback-ids`;
+
+    // Check if playbackIds is an array and join them with "&"
+    const queryParams =
+      props?.playbackId && Array.isArray(props?.playbackId)
+        ? `?${props.playbackId.map((id) => `playbackId=${id}`).join("&")}`
+        : "";
+
     const url = this.fetch.constructUrl(requestObj, path, queryParams);
     const constructObject: RequestObject = {
       ...requestObj,

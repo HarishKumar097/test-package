@@ -6,6 +6,7 @@ import type {
 } from "../Types";
 
 class Fetcher {
+
   // Fetches data from the specified URL using the provided headers.
   async fetchData(url: string, header: HeaderOptions): Promise<FetchResponse> {
     if (!url || !header) {

@@ -33,26 +33,36 @@ console.log("Playback ID Creation Response:", playbackIdResponse);
 
 # Method: deleteMediaPlaybackId()
 
-The `deleteMediaPlaybackId` method allows you to delete a specific playback ID for a media asset. You must provide both the `mediaId` (the unique identifier for the media) and the `playbackId` (the unique identifier for the playback) to delete the playback ID.
+The `deleteMediaPlaybackId` method allows you to delete one or more playback IDs for a media asset. You must provide both the `mediaId` and an array of `playbackId` values to delete the corresponding playback IDs.
 
 ### Parameters Details:
 
 | **Parameter**           | **Description**                                                                                      | **Type** | **Accepted Values**                     |
 | ----------------------- | ---------------------------------------------------------------------------------------------------- | -------- | --------------------------------------- |
 | `mediaId` (required)    | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters.       | `String` | Any valid string (up to 255 characters) |
-| `playbackId` (required) | The unique identifier for the playback ID to be deleted. It can contain a maximum of 255 characters. | `String` | Any valid string (up to 255 characters) |
+| `playbackId` (required) | The unique identifiers for the playback IDs to be deleted.            | `Array`  | Array of valid strings (up to 255 characters each) |
 
 ### Example Request:
 
 ```javascript
-// Define the mediaId and playbackId dynamically
-const mediaId = "media-id"; // The ID of the media asset for which you want to delete the playback ID.
-const playbackId = "playback-id"; // The playback ID that you want to delete.
+
+const mediaId = "media-id"; // The ID of the media asset for which you want to delete the playback IDs.
+
+const playbackId = [
+  "playback-id-1"
+];
+
+// // For Multiple playbackId's
+// const playbackId = [
+//   "playback-id-1",
+//   "playback-id-2",
+//   "playback-id-3"
+// ];
 
 const deletePlaybackResponse = await fastpix.deleteMediaPlaybackId({
-  mediaId: mediaId, // Pass the mediaId for which playback ID is to be deleted
-  playbackId: playbackId, // Pass the playbackId to delete
+  mediaId: mediaId, // Pass the mediaId for which playback IDs are to be deleted
+  playbackId: playbackId, // Pass the array of playbackIds to delete
 });
 
-console.log("Playback ID Deletion Response:", deletePlaybackResponse);
+console.log("Deleted Playback IDs:", deletePlaybackResponse);
 ```

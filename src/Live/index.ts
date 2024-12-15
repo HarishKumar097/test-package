@@ -73,7 +73,7 @@ class LiveStream {
 
   // Retrieves details of a specific live stream.
   async getLiveStream(props: LiveStreamProps, requestObj: RequestObject) {
-    const path = `${this.livePath}/${props?.streamId}`;
+    const path = `${this.livePath}/${props?.streamId || ""}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -94,7 +94,7 @@ class LiveStream {
     updateObject: UpdateObject,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId}`;
+    const path = `${this.livePath}/${props?.streamId || ""}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -115,7 +115,7 @@ class LiveStream {
 
   // Deletes a specific live stream.
   async deleteLiveStream(props: LiveStreamProps, requestObj: RequestObject) {
-    const path = `${this.livePath}/${props?.streamId}`;
+    const path = `${this.livePath}/${props?.streamId || ""}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -137,7 +137,7 @@ class LiveStream {
     playbackPolicy: AccessPolicy,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId}/playback-ids`;
+    const path = `${this.livePath}/${props?.streamId || ""}/playback-ids`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -160,8 +160,11 @@ class LiveStream {
     props: LiveStreamProps,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId}/playback-ids`;
-    const queryParams = `?playbackId=${props?.playbackId}`;
+    const path = `${this.livePath}/${props?.streamId || ""}/playback-ids`;
+    const queryParams =
+      props?.playbackId && Array.isArray(props?.playbackId)
+        ? `?${props.playbackId.map((id) => `playbackId=${id}`).join("&")}`
+        : "";
     const url = this.fetch.constructUrl(requestObj, path, queryParams);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -181,7 +184,7 @@ class LiveStream {
     props: LiveStreamProps,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId}/playback-ids/${props?.playbackId}`;
+    const path = `${this.livePath}/${props?.streamId || ""}/playback-ids/${props?.playbackId}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -203,7 +206,7 @@ class LiveStream {
     liveStreamObj: SimulcastObject,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId}/simulcast`;
+    const path = `${this.livePath}/${props?.streamId || ""}/simulcast`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -226,7 +229,7 @@ class LiveStream {
     props: SimulcastProps,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId}/simulcast/${props?.simulcastId}`;
+    const path = `${this.livePath}/${props?.streamId || ""}/simulcast/${props?.simulcastId}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -247,7 +250,7 @@ class LiveStream {
     simulcastObj: UpdateSimulcastProps,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId}/simulcast/${props?.simulcastId}`;
+    const path = `${this.livePath}/${props?.streamId || ""}/simulcast/${props?.simulcastId}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -270,7 +273,7 @@ class LiveStream {
     props: SimulcastProps,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId}/simulcast/${props?.simulcastId}`;
+    const path = `${this.livePath}/${props?.streamId || ""}/simulcast/${props?.simulcastId}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,

@@ -39,7 +39,7 @@ console.log("All Live Streams:", getAllLiveStreams);
 
 # Method: getLiveStreamById()
 
-The `getLiveStreamById` method allows you to retrieve the details of a specific live stream by its unique stream ID. After initiating a live stream, FastPix assigns a unique identifier to the stream, which can be used to fetch its details.
+The `getLiveStreamById` method allows you to retrieve the details of a specific live stream by its unique `streamId`. 
 
 ### Parameter Details:
 
@@ -62,15 +62,15 @@ console.log("Live Stream Details:", getLiveStreamById);
 
 # Method: updateLiveStream()
 
-The `updateLiveStream` method allows you to update the configuration of a live stream. You can modify various settings, such as metadata and reconnect window, using this method. To apply updates, provide the `streamId` of the stream you wish to modify and specify the fields you want to update.
+The `updateLiveStream` method allows you to update a live stream's `metadata` and `reconnectWindow`, using the `streamId`.
 
 ### Parameter Details:
 
 | **Parameter**                | **Description**                                                                                                                                                   | **Type**  | **Accepted Values**                                             |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | --------------------------------------------------------------- |
 | `streamId` (required)        | The unique identifier assigned to the live stream. You receive this ID upon stream creation.                                                                      | `String`  | Any valid string (max 255 characters)                           |
-| `metadata` (optional)        | Optional metadata to tag the live stream with key-value pairs. You can add up to 10 key-value pairs, and each key and value can have a maximum of 255 characters. | `Object`  | Any valid key-value pair (max 255 characters per key and value) |
-| `reconnectWindow` (optional) | The time (in seconds) before ending the stream in case of a disruption. This value can range from 60 to 1800 seconds.                           | `Integer` | 60 to 1800 (seconds)                                            |
+| `metadata`       | Optional metadata to tag the live stream with key-value pairs. You can add up to 10 key-value pairs, and each key and value can have a maximum of 255 characters. | `Object`  | Any valid key-value pair (max 255 characters per key and value) |
+| `reconnectWindow` | The time (in seconds) before ending the stream in case of a disruption. This value can range from 60 to 1800 seconds.                           | `Integer` | 60 to 1800 (seconds)                                            |
 
 ### Example Request:
 
@@ -96,7 +96,7 @@ console.log("Updated Live Stream:", updateLiveStream);
 
 # Method: deleteLiveStream()
 
-The `deleteLiveStream` method allows you to delete a live stream by its unique `streamId`. To remove a stream, provide the `streamId` of the stream you wish to delete. This method permanently deletes the live stream and all associated data.
+The `deleteLiveStream` method allows you to delete a live stream by its unique `streamId`.
 
 ### Parameter Details:
 
