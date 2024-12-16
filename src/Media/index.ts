@@ -47,7 +47,10 @@ class Media {
   async uploadAsset(
     props: DirectUploadRequest = {
       corsOrigin: "",
-      inputs: [],
+      pushMediaSettings: {
+        accessPolicy: "public",
+        inputs: [],
+      },
     },
     requestObj: RequestObject
   ) {

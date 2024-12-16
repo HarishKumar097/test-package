@@ -1,6 +1,3 @@
-// Supported MP4 types for media
-type Mp4Support = "capped_4k" | "audioOnly";
-
 // Error field structure for detailed error reporting
 type ErrorField = { key: string; value: string };
 
@@ -46,72 +43,9 @@ export interface SimulcastObject {
   metadata?: Record<string, any>;
 }
 
-// Interface for uploading media from a URL
-export interface UploadMediaFromUrlProps {
-  inputs?: Array<{
-    type?: string;
-    url?: string; // URL must be a string
-  }>;
-  metadata?: {
-    [key: string]: string; // Metadata is optional and allows any key-value pair
-  };
-  accessPolicy?: string; // Allowed access policies
-}
-
-// Interface for direct upload request body
-export interface DirectUploadRequest {
-  corsOrigin?: string; // CORS origin, e.g., "*"
-  pushMediaSettings?: PushMediaSettings; // Optional configuration settings
-  inputs?: MediaInput[]; // Array of media inputs
-  metadata?: Metadata; // Optional metadata for searchable tags
-  subtitles?: Subtitle[]; // Optional subtitle configurations
-  optimizeAudio?: boolean; // Enhance audio quality
-  maxResolution?: string; // Max resolution, defaults to "1080p"
-  mp4Support?: Mp4Support; // MP4 support type
-}
-
-// Push Media Settings
-interface PushMediaSettings {
-  accessPolicy?: string; // Access control for the media
-  startTime?: number; // Start time for encoding in seconds
-  endTime?: number; // End time for encoding in seconds
-}
-
-// Media Input object
-interface MediaInput {
-  type?: "video" | "audio" | "watermark"; // Type of input
-  startTime?: number; // Start time in seconds for encoding
-  endTime?: number; // End time in seconds for encoding
-  introUrl?: string; // Intro video URL
-  outroUrl?: string; // Outro video URL
-  expungeSegments?: string[]; // List of segments to remove, e.g., ["start-end"]
-  watermark?: Watermark; // Watermark object
-}
-
-// Watermark object
-interface Watermark {
-  type?: "watermark"; // Only watermark type supported
-  url?: string; // URL of the watermark image
-  placement?: WatermarkPlacement; // Optional placement settings
-}
-
-// Watermark Placement object
-interface WatermarkPlacement {
-  width?: string; // Width in percentage or pixels
-  height?: string; // Height in percentage or pixels
-  opacity?: string; // Opacity in percentage
-}
-
 // Metadata object for tagging videos
 interface Metadata {
   [key: string]: string; // Key-value pairs for metadata
-}
-
-// Subtitles object
-interface Subtitle {
-  name: string; // Name of the subtitle language
-  metadata?: Metadata; // Metadata for the subtitles
-  languageCode: string; // Language code (BCP 47 compliant)
 }
 
 // Interface for configuration error response
@@ -184,4 +118,94 @@ export interface FetcherProps {
     queryParams?: string
   ): string;
   constructHeaders(requestObj: RequestObject): HeaderOptions;
+}
+
+interface WatermarkPlacement {
+  xAlign?: string;
+  xMargin?: string;
+  yAlign?: string;
+  yMargin?: string;
+}
+
+interface Watermark {
+  placement?: WatermarkPlacement;
+  type?: string;
+  url?: string;
+  width?: string;
+  height?: string;
+  opacity?: string;
+}
+
+interface ImposeTrack {
+  url?: string;
+  startTime?: number;
+  endTime?: number;
+  fadeInLevel?: number;
+  fadeOutLevel?: number;
+}
+
+interface Audio {
+  type?: string;
+  swapTrackUrl?: string;
+  imposeTracks?: ImposeTrack[];
+}
+
+interface VideoInput {
+  type?: string; // required
+  url?: string; // required
+  watermark?: Watermark;
+  audio?: Audio;
+  startTime?: number;
+  endTime?: number;
+  introUrl?: string;
+  outroUrl?: string;
+  expungeSegments?: string[];
+}
+
+interface Subtitle {
+  metadata?: Record<string, string>; // Key-value pairs for metadata
+  name?: string;
+  languageCode?: string;
+}
+
+interface MediaSettings {
+  metadata?: Metadata;
+  subtitle?: Subtitle;
+  accessPolicy?: string; // required
+  optimizeAudio?: boolean;
+  maxResolution?: string;
+  inputs?: VideoInput[]; // Inputs are part of MediaSettings
+  mp4Support?: string;
+  startTime?: number;
+  endTime?: number;
+}
+
+interface PushMediaSettings {
+  accessPolicy?: string; // required
+  metadata?: Metadata;
+  subtitles?: Subtitle[];
+  optimizeAudio?: boolean;
+  maxResolution?: string;
+  startTime?: number;
+  endTime?: number;
+  inputs?: VideoInput[]; // Inputs are part of PushMediaSettings
+  mp4Support?: string;
+}
+
+export interface UploadMediaFromUrlProps {
+  metadata?: Metadata;
+  subtitle?: Subtitle;
+  accessPolicy?: string; // required
+  optimizeAudio?: boolean;
+  maxResolution?: string;
+  inputs?: VideoInput[];
+  mp4Support?: string;
+  startTime?: number;
+  endTime?: number;
+}
+
+export interface DirectUploadRequest {
+  corsOrigin?: string;
+  pushMediaSettings?: PushMediaSettings;  // Settings for media upload configuration, including inputs
+  mediaSettings?: MediaSettings;          // General media settings including access control, resolution, etc.
 }
