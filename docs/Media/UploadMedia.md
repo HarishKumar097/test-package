@@ -95,7 +95,7 @@ const uploadMedia = await fastpix.uploadMediaFromUrl({
   metadata: {
     newKey: "New Value",
   },
-  subtitle: {
+  subtitles: {
     metadata: {
       newKey: "New Value",
       "newKey-1": "New Value",

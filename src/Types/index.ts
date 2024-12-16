@@ -183,7 +183,7 @@ interface MediaSettings {
 interface PushMediaSettings {
   accessPolicy?: string; // required
   metadata?: Metadata;
-  subtitles?: Subtitle[];
+  subtitles?: Subtitle;
   optimizeAudio?: boolean;
   maxResolution?: string;
   startTime?: number;
@@ -194,7 +194,7 @@ interface PushMediaSettings {
 
 export interface UploadMediaFromUrlProps {
   metadata?: Metadata;
-  subtitle?: Subtitle;
+  subtitles?: Subtitle;
   accessPolicy?: string; // required
   optimizeAudio?: boolean;
   maxResolution?: string;
