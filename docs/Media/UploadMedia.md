@@ -258,64 +258,46 @@ If the media type is `"audio"`, the following parameters are relevant:
 ### Example Request:
 
 ```javascript
-const uploadMedia = await fastpix.uploadMediaFromUrl({
-  "corsOrigin": "*", // required
-  "pushMediaSettings": {
-    "accessPolicy": "public", // required
-    "startTime": 0,
-    "endTime": 120,
-    "inputs": [
+const uploadMedia = await fastpix.uploadMediaFromDevice({
+  pushMediaSettings: {
+    accessPolicy: "public",
+    metadata: { newKey: "New Value" },
+    subtitles: { name: "english", languageCode: "en" },
+    optimizeAudio: true,
+    maxResolution: "1080p",
+    startTime: 0,
+    endTime: 60,
+    inputs: [
       {
-        "type": "video",
-        "startTime": 0,
-        "endTime": 120,
-        "introUrl": "https://example.com/intro.mp4",
-        "outroUrl": "https://example.com/outro.mp4",
-        "expungeSegments": ["0-10", "50-60"]
+        watermark: {
+          placement: {
+            xAlign: "center",
+            xMargin: "10%",
+            yAlign: "middle",
+            yMargin: "10%",
+          },
+          type: "watermark",
+          url: "https://static.fastpix.io/watermark-4k.png",
+          width: "25%",
+          height: "25%",
+          opacity: "80%",
+        },
+        audio: {
+          type: "audio",
+          swapTrackUrl:
+            "https://file-examples.com/storage/fe0e9b723466913cf9611b7/2017/11/file_example_MP3_700KB.mp3",
+        },
+        type: "video",
+        startTime: 0,
+        endTime: 60,
+        introUrl: "https://static.fastpix.io/sample.mp4",
+        outroUrl: "https://static.fastpix.io/sample.mp4",
+        expungeSegments: ["2-4"],
       },
-      {
-        "type": "audio",
-        "swapTrackUrl": "https://example.com/audio.mp3",
-        "imposeTracks": [
-          {
-            "trackUrl": "https://example.com/audio2.mp3",
-            "startTime": 30,
-            "endTime": 90
-          }
-        ]
-      },
-      {
-        "type": "watermark",
-        "url": "https://example.com/watermark.png",
-        "placement": {
-          "xAlign": "left",
-          "xMargin": "10px",
-          "yAlign": "top",
-          "yMargin": "10px",
-          "width": "20%",
-          "height": "20%",
-          "opacity": "50"
-        }
-      }
     ],
-    "metadata": {
-      "title": "Sample Video",
-      "description": "A test video for upload."
-    },
-    "subtitles": [
-      {
-        "name": "English",
-        "languageCode": "en"
-      },
-      {
-        "name": "Spanish",
-        "languageCode": "es"
-      }
-    ],
-    "optimizeAudio": true,
-    "maxResolution": "1080p",
-    "mp4Support": "capped_4k"
-  }
+    mp4Support: "capped_4k",
+  },
+  corsOrigin: "*",
 });
 
 console.log("Media uploaded successfully:", uploadMedia);
