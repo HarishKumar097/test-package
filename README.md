@@ -170,14 +170,14 @@ Use the `getAllMediaAssets` method to fetch a list of all media assets. You can 
 
 ```javascript
 // Define the parameters for fetching media assets in a separate variable.
-const mediaAssetRequestParams = {
-  limit: 10, // Number of media assets to fetch in one request.
-  offset: 1, // Starting position for the list of media assets (useful for pagination).
-  orderBy: "desc", // Sort order for the media assets ("desc" for descending, "asc" for ascending).
+const mediaQueryParams = {
+  limit: 20,    // Number of assets to fetch in one request (between 1 and 50)
+  offset: 5,    // Pagination starting position
+  orderBy: "asc"  // Sorting order of the assets ("asc" for ascending)
 };
 
-const allMediaAssets = await fastpix.getAllMediaAssets(mediaAssetRequestParams);
-console.log("All Media Assets:", allMediaAssets);
+const mediaAssets = await fastpix.getAllMediaAssets(mediaQueryParams);
+console.log("Fetched Media Assets:", mediaAssets);
 ```
 
 #### Get Media Asset by ID:
@@ -186,11 +186,11 @@ Use the `getMediaAssetById` method to retrieve a specific media asset by its ID.
 
 ```javascript
 // Define the parameter for fetching a specific media asset by ID.
-const mediaAssetRequestParams = {
-  mediaId: "mediaId", // Unique identifier for the media asset to be retrieved.
+const mediaQueryParams = {
+  mediaId: "media-id", // Unique identifier for the media asset to be retrieved
 };
 
-const getMediaAsset = await fastpix.getMediaAssetById(mediaAssetRequestParams);
+const getMediaAsset = await fastpix.getMediaAssetById(mediaQueryParams);
 console.log("Retrieved media asset by ID:", getMediaAsset);
 ```
 
@@ -207,7 +207,8 @@ const mediaAssetToUpdate = {
 // Define the payload with the updates to be applied to the media asset.
 const updatePayload = {
   metadata: {
-    key: "value", // Metadata to update; replace "key" and "value" with actual metadata keys and values.
+    "key": "value", // Replace "key" and "value" with actual metadata entries.
+    "category": "nature" // Example of another metadata entry.
   },
 };
 
@@ -272,12 +273,14 @@ console.log("Playback ID Creation Response:", playbackIdResponse);
 
 #### Delete Media Playback ID:
 
-Use the `deleteMediaPlaybackId` method to delete a playback ID for a specific media asset. You need to pass both the `mediaId` and the `playbackId` to delete the playback ID. For detailed configuration options, refer to the [Delete a playback ID](https://docs.fastpix.io/reference/delete-media-playback-id) API documentation.
+Use the `deleteMediaPlaybackId` method to delete one or more playback IDs for a specific media asset. You need to pass the `mediaId` and an array of `playbackId` values. For detailed configuration options, refer to the [Delete a playback ID](https://docs.fastpix.io/reference/delete-media-playback-id) API documentation.
 
 ```javascript
-// Define the mediaId and playbackId dynamically
 const mediaId = "media-id"; // The ID of the media asset for which you want to delete the playback ID.
-const playbackId = "playback-id"; // The playback ID that you want to delete.
+const playbackId = ["playback-id"]; // The playback ID that you want to delete.
+
+// For multiple playbackIds
+// const playbackId = ["playback-id-1", "playback-id-2"];
 
 const deletePlaybackResponse = await fastpix.deleteMediaPlaybackId({
   mediaId: mediaId, // Pass the mediaId for which playback ID is to be deleted
@@ -395,12 +398,21 @@ console.log("Generated Live Stream Playback ID:", generateLiveStreamPlaybackId);
 
 #### Delete Live Stream Playback ID:
 
-Use the `deleteLiveStreamPlaybackId` method to delete a specific playback ID for a live stream. You need to provide both the `streamId` of the live stream and the `playbackId` to delete. For more details, refer to the [Delete a playback ID](https://docs.fastpix.io/reference/delete-playbackid-of-stream) API documentation.
+Use `deleteLiveStreamPlaybackId` method to delete one or more playback IDs for a live stream. You need to provide both the `streamId` of the live stream and an array of `playbackId` values. For more details, refer to the [Delete a playback ID](https://docs.fastpix.io/reference/delete-playbackid-of-stream) API documentation.
 
 ```javascript
+// Define the streamId and playbackId dynamically
+const streamId = "a09f3e958c16ed00e85bfe798abd9845";
+
+// For single playbackId
+const playbackId = ["632029b4-7c53-4dcf-a4d3-1884c29e90f8"]; 
+
+// For multiple playbackId's
+// const playbackId = ["632029b4-7c53-4dcf-a4d3-1884c29e90f8", "687629b4-7c53-4dcf-a4d3-1884876540f8"]; 
+
 const deleteLiveStreamPlaybackId = await fastpix.deleteLiveStreamPlaybackId({
-  streamId: "a09f3e958c16ed00e85bfe798abd9845", // Replace with actual stream ID
-  playbackId: "632029b4-7c53-4dcf-a4d3-1884c29e90f8", // Replace with actual playback ID
+  streamId: streamId, // Pass the streamId of the live stream for which playback ID is to be deleted
+  playbackId: playbackId, // Pass the playbackId as an array (even for a single ID)
 });
 
 console.log("Deleted Live Stream Playback ID:", deleteLiveStreamPlaybackId);
