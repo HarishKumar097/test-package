@@ -31,37 +31,33 @@ console.log("Generated Live Stream Playback ID:", generateLiveStreamPlaybackId);
 
 # Method: deleteLiveStreamPlaybackId()
 
-The `deleteLiveStreamPlaybackId` method allows you to delete one or more playback IDs for a live stream. You must provide both the `streamId` of the live stream and an array of `playbackId` values to delete the corresponding playback IDs. 
+The `deleteLiveStreamPlaybackId` method allows you to delete one or more playback IDs for a live stream. This method allows you to specify the `streamId` of the live stream, and the `playbackId` you wish to delete and supports deleting a **single playback ID** as a string or **multiple playback IDs** as an array of strings.
 
 ### Parameter Details:
 
 | **Parameter**           | **Description**                                                                                       | **Type** | **Accepted Values**                     |
 | ----------------------- | ---------------------------------------------------------------------------------------------------- | -------- | --------------------------------------- |
 | `streamId` (required)   | The unique identifier assigned to the live stream. You receive this ID when creating the live stream. | `String` | Any valid string (up to 255 characters) |
-| `playbackId` (required) | The unique identifiers for the playback IDs to be deleted.            | `Array`  | Array of valid strings (up to 255 characters each) |
+| `playbackId` (required) | The unique identifiers for the playback IDs to be deleted.            | `Array` or `String`  | Array of valid strings (up to 255 characters each) or string |
 
 ### Example Request:
 
 ```javascript
-const streamId = "a09f3e958c16ed00e85bfe798abd9845"; // The ID of the live stream for which you want to delete the playback IDs.
+// Define the streamId and playbackId dynamically
+const streamId = "a09f3e958c16ed00e85bfe798abd9845";
 
-const playbackId = [
-  "632029b4-7c53-4dcf-a4d3-1884c29e90f8"
-];
+// For single playbackId, pass it as a string
+const playbackId = "632029b4-7c53-4dcf-a4d3-1884c29e90f8"; 
 
-// For Multiple playbackId's
-// const playbackId = [
-//   "632029b4-7c53-4dcf-a4d3-1884c29e90f8",
-//   "932029b4-7c53-4dcf-a4d3-1884c29e9065",
-//   "6782029b4-7c53-4dcf-a4d3-1884c29e998"
-// ];
+// For multiple playbackId's, pass them as an array of strings
+// const playbackId = ["632029b4-7c53-4dcf-a4d3-1884c29e90f8", "687629b4-7c53-4dcf-a4d3-1884876540f8"]; 
 
 const deleteLiveStreamPlaybackId = await fastpix.deleteLiveStreamPlaybackId({
-  streamId: streamId, // Pass the streamId for which playback IDs are to be deleted
-  playbackId: playbackId, // Pass the array of playbackIds to delete
+  streamId: streamId, // Pass the streamId of the live stream for which playback ID is to be deleted
+  playbackId: playbackId, // Pass the playbackId as an array (even for a single ID)
 });
 
-console.log("Deleted Live Stream Playback IDs:", deleteLiveStreamPlaybackId);
+console.log("Deleted Live Stream Playback ID:", deleteLiveStreamPlaybackId);
 ```
 
 ---

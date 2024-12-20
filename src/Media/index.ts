@@ -48,8 +48,8 @@ class Media {
     props: DirectUploadRequest = {
       corsOrigin: "",
       pushMediaSettings: {
-        accessPolicy: "public",
-        inputs: [],
+        accessPolicy: "public", // Default access policy
+        inputs: [], // Default empty array for inputs (inside pushMediaSettings)
       },
     },
     requestObj: RequestObject
@@ -197,11 +197,14 @@ class Media {
   async removeMediaPlaybackId(props: MediaProps, requestObj: RequestObject) {
     const path = `${this.mediaPath}/${props?.mediaId || ""}/playback-ids`;
 
-    // Check if playbackIds is an array and join them with "&"
-    const queryParams =
-      props?.playbackId && Array.isArray(props?.playbackId)
-        ? `?${props.playbackId.map((id) => `playbackId=${id}`).join("&")}`
-        : "";
+    let queryParams = "";
+    if (props?.playbackId) {
+      if (Array.isArray(props.playbackId)) {
+        queryParams = `?${props.playbackId.map((id) => `playbackId=${id}`).join("&")}`;
+      } else if (typeof props.playbackId === "string") {
+        queryParams = `?playbackId=${props.playbackId}`;
+      }
+    }
 
     const url = this.fetch.constructUrl(requestObj, path, queryParams);
     const constructObject: RequestObject = {

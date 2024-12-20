@@ -16,7 +16,7 @@ export interface AccessPolicy {
 // Interface for media properties
 export interface MediaProps {
   mediaId?: string;
-  playbackId?: string[];
+  playbackId?: string[] | string;
 }
 
 // Interface for update operations with dynamic key-value pairs
@@ -27,7 +27,7 @@ export interface UpdateObject {
 // Interface for live stream properties
 export interface LiveStreamProps {
   streamId?: string;
-  playbackId?: string[];
+  playbackId?: string[] | string;
 }
 
 // Interface for simulcast properties
@@ -206,6 +206,6 @@ export interface UploadMediaFromUrlProps {
 
 export interface DirectUploadRequest {
   corsOrigin?: string;
-  pushMediaSettings?: PushMediaSettings;  // Settings for media upload configuration, including inputs
-  mediaSettings?: MediaSettings;          // General media settings including access control, resolution, etc.
+  pushMediaSettings?: PushMediaSettings; // Settings for media upload configuration, including inputs
+  mediaSettings?: MediaSettings; // General media settings including access control, resolution, etc.
 }

@@ -154,7 +154,7 @@ const uploadMedia = await fastpix.uploadMediaFromUrl({
   mp4Support: "capped_4k",
 });
 
-console.log("Media uploaded successfully:", uploadMedia);
+console.log("Upload Response:", uploadMedia);
 ```
 
 ---
@@ -300,5 +300,5 @@ const uploadMedia = await fastpix.uploadMediaFromDevice({
   corsOrigin: "*",
 });
 
-console.log("Media uploaded successfully:", uploadMedia);
+console.log("Upload Response:", uploadMedia);
 ```

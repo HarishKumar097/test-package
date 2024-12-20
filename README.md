@@ -26,7 +26,7 @@ To get started with the **FastPix Node SDK**, ensure you have the following:
 
 - The FastPix APIs are authenticated using an **Access Token** and a **Secret Key**. You must generate these credentials to use the SDK.
 
-- Follow the steps in the [Authentication with Access Tokens](https://docs.fastpix.io/docs/authentication-with-access-tokens) guide to obtain your credentials.
+- Follow the steps in the [Authentication with Access Tokens](https://docs.fastpix.io/docs/basic-authentication) guide to obtain your credentials.
 
 # Installation:
 
@@ -273,18 +273,19 @@ console.log("Playback ID Creation Response:", playbackIdResponse);
 
 #### Delete Media Playback ID:
 
-Use the `deleteMediaPlaybackId` method to delete one or more playback IDs for a specific media asset. You need to pass the `mediaId` and an array of `playbackId` values. For detailed configuration options, refer to the [Delete a playback ID](https://docs.fastpix.io/reference/delete-media-playback-id) API documentation.
+Use the `deleteMediaPlaybackId` method to delete one or more playback IDs associated with a specific media asset. This method allows you to specify both the `mediaId` and the `playbackId` you wish to delete. This method supports deleting a **single playback ID** as a string or **multiple playback IDs** as an array of strings. For detailed configuration options, refer to the [Delete a playback ID](https://docs.fastpix.io/reference/delete-media-playback-id) API documentation.
 
 ```javascript
 const mediaId = "media-id"; // The ID of the media asset for which you want to delete the playback ID.
-const playbackId = ["playback-id"]; // The playback ID that you want to delete.
+const playbackId = "playback-id"; // For deleting a single playback ID as a string.
 
-// For multiple playbackIds
-// const playbackId = ["playback-id-1", "playback-id-2"];
+// Example for multiple playback IDs:
+// const playbackId = ["playback-id-1", "playback-id-2"]; // Pass an array of playback IDs to delete.
 
+// Use the deleteMediaPlaybackId method to delete the specified playback ID(s).
 const deletePlaybackResponse = await fastpix.deleteMediaPlaybackId({
-  mediaId: mediaId, // Pass the mediaId for which playback ID is to be deleted
-  playbackId: playbackId, // Pass the playbackId to delete
+  mediaId: mediaId,     // Pass the mediaId for which playback ID(s) are to be deleted
+  playbackId: playbackId, // Pass the playbackId(s) to delete. 
 });
 
 console.log("Playback ID Deletion Response:", deletePlaybackResponse);
@@ -398,16 +399,16 @@ console.log("Generated Live Stream Playback ID:", generateLiveStreamPlaybackId);
 
 #### Delete Live Stream Playback ID:
 
-Use `deleteLiveStreamPlaybackId` method to delete one or more playback IDs for a live stream. You need to provide both the `streamId` of the live stream and an array of `playbackId` values. For more details, refer to the [Delete a playback ID](https://docs.fastpix.io/reference/delete-playbackid-of-stream) API documentation.
+Use the `deleteLiveStreamPlaybackId` method to remove one or more playback IDs associated with a live stream. This method allows you to specify the `streamId` of the live stream, and the `playbackId` you wish to delete. This method supports deleting a **single playback ID** as a string or **multiple playback IDs** as an array of strings. For more details, refer to the [Delete a playback ID](https://docs.fastpix.io/reference/delete-playbackid-of-stream) API documentation.
 
 ```javascript
 // Define the streamId and playbackId dynamically
 const streamId = "a09f3e958c16ed00e85bfe798abd9845";
 
-// For single playbackId
-const playbackId = ["632029b4-7c53-4dcf-a4d3-1884c29e90f8"]; 
+// For single playbackId, pass it as a string
+const playbackId = "632029b4-7c53-4dcf-a4d3-1884c29e90f8"; 
 
-// For multiple playbackId's
+// For multiple playbackId's, pass them as an array of strings
 // const playbackId = ["632029b4-7c53-4dcf-a4d3-1884c29e90f8", "687629b4-7c53-4dcf-a4d3-1884876540f8"]; 
 
 const deleteLiveStreamPlaybackId = await fastpix.deleteLiveStreamPlaybackId({

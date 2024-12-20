@@ -161,10 +161,16 @@ class LiveStream {
     requestObj: RequestObject
   ) {
     const path = `${this.livePath}/${props?.streamId || ""}/playback-ids`;
-    const queryParams =
-      props?.playbackId && Array.isArray(props?.playbackId)
-        ? `?${props.playbackId.map((id) => `playbackId=${id}`).join("&")}`
-        : "";
+
+    let queryParams = "";
+    if (props?.playbackId) {
+      if (Array.isArray(props.playbackId)) {
+        queryParams = `?${props.playbackId.map((id) => `playbackId=${id}`).join("&")}`;
+      } else if (typeof props.playbackId === "string") {
+        queryParams = `?playbackId=${props.playbackId}`;
+      }
+    }
+
     const url = this.fetch.constructUrl(requestObj, path, queryParams);
     const constructObject: RequestObject = {
       ...requestObj,
