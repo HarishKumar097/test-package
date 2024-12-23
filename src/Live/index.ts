@@ -12,7 +12,7 @@ import type {
   HeaderOptions,
 } from "../Types";
 
-import Fetcher from "../Fetch";
+import Fetcher from "../NetworkFetcher";
 
 class LiveStream {
   livePath: string;
@@ -43,7 +43,6 @@ class LiveStream {
         },
       },
     };
-
     const createLiveStreamHeader = this.fetch.constructHeaders(constructObject);
     const createLiveStreamResponse = await this.fetch.fetchData(
       url,

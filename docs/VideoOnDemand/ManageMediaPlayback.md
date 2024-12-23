@@ -40,7 +40,7 @@ The `deleteMediaPlaybackId` method allows you to delete one or more playback IDs
 | **Parameter**           | **Description**                                                                                      | **Type** | **Accepted Values**                     |
 | ----------------------- | ---------------------------------------------------------------------------------------------------- | -------- | --------------------------------------- |
 | `mediaId` (required)    | The unique identifier assigned to the media asset. It can contain a maximum of 255 characters.       | `String` | Any valid string (up to 255 characters) |
-| `playbackId` (required) | The unique identifiers for the playback IDs to be deleted.            | `Array` or `string`  | Array of valid strings (up to 255 characters each) or string |
+| `playbackId` (required) | The unique identifiers for the playback IDs to be deleted.            | `Array` or `String`  | Array of valid strings (up to 255 characters each) or string |
 
 ### Example Request:
 

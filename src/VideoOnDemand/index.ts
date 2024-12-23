@@ -9,7 +9,7 @@ import type {
   FetcherProps,
 } from "../Types";
 
-import Fetcher from "../Fetch";
+import Fetcher from "../NetworkFetcher";
 
 class Media {
   mediaPath: string;
@@ -36,7 +36,6 @@ class Media {
         ...restProps,
       },
     };
-
     const createAssetHeader = this.fetch.constructHeaders(constructObject);
     const createUrlAsset = await this.fetch.fetchData(url, createAssetHeader);
 
@@ -75,7 +74,6 @@ class Media {
         ...restProps,
       },
     };
-
     const uploadAssetHeader = this.fetch.constructHeaders(constructObject);
     const uploadMediaAsset = await this.fetch.fetchData(url, uploadAssetHeader);
 

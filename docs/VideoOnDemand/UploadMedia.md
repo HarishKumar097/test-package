@@ -108,40 +108,6 @@ const uploadMedia = await fastpix.uploadMediaFromUrl({
   maxResolution: "1080p",
   inputs: [
     {
-      watermark: {
-        placement: {
-          xAlign: "left",
-          xMargin: "10%",
-          yAlign: "middle",
-          yMargin: "10%",
-        },
-        type: "watermark",
-        url: "https://static.fastpix.io/watermark-4k.png",
-        width: "25%",
-        height: "25%",
-        opacity: "80%",
-      },
-      audio: {
-        type: "audio",
-        swapTrackUrl:
-          "https://file-examples.com/storage/fe0e9b723466913cf9611b7/2017/11/file_example_MP3_700KB.mp3",
-        imposeTracks: [
-          {
-            url: "https://muxed.s3.amazonaws.com/example-impose-audio-track.m4a",
-            startTime: 0,
-            endTime: 5,
-            fadeInLevel: 1,
-            fadeOutLevel: 4,
-          },
-          {
-            url: "https://muxed.s3.amazonaws.com/example-impose-audio-track.m4a",
-            startTime: 0,
-            endTime: 5,
-            fadeInLevel: 1,
-            fadeOutLevel: 4,
-          },
-        ],
-      },
       type: "video", // required
       url: "https://static.fastpix.io/sample.mp4", //required
       startTime: 0,
@@ -149,6 +115,40 @@ const uploadMedia = await fastpix.uploadMediaFromUrl({
       introUrl: "https://static.fastpix.io/sample.mp4",
       outroUrl: "https://static.fastpix.io/sample.mp4",
       expungeSegments: ["3-5", "6-8"],
+    },
+    {
+      placement: {
+        xAlign: "left",
+        xMargin: "10%",
+        yAlign: "middle",
+        yMargin: "10%",
+      },
+      type: "watermark",
+      url: "https://static.fastpix.io/watermark-4k.png",
+      width: "25%",
+      height: "25%",
+      opacity: "80%",
+    },
+    {
+      type: "audio",
+      swapTrackUrl:
+        "https://file-examples.com/storage/fe0e9b723466913cf9611b7/2017/11/file_example_MP3_700KB.mp3",
+      imposeTracks: [
+        {
+          url: "https://muxed.s3.amazonaws.com/example-impose-audio-track.m4a",
+          startTime: 0,
+          endTime: 5,
+          fadeInLevel: 1,
+          fadeOutLevel: 4,
+        },
+        {
+          url: "https://muxed.s3.amazonaws.com/example-impose-audio-track.m4a",
+          startTime: 0,
+          endTime: 5,
+          fadeInLevel: 1,
+          fadeOutLevel: 4,
+        },
+      ],
     },
   ],
   mp4Support: "capped_4k",
@@ -269,30 +269,46 @@ const uploadMedia = await fastpix.uploadMediaFromDevice({
     endTime: 60,
     inputs: [
       {
-        watermark: {
-          placement: {
-            xAlign: "center",
-            xMargin: "10%",
-            yAlign: "middle",
-            yMargin: "10%",
-          },
-          type: "watermark",
-          url: "https://static.fastpix.io/watermark-4k.png",
-          width: "25%",
-          height: "25%",
-          opacity: "80%",
-        },
-        audio: {
-          type: "audio",
-          swapTrackUrl:
-            "https://file-examples.com/storage/fe0e9b723466913cf9611b7/2017/11/file_example_MP3_700KB.mp3",
-        },
         type: "video",
         startTime: 0,
         endTime: 60,
         introUrl: "https://static.fastpix.io/sample.mp4",
         outroUrl: "https://static.fastpix.io/sample.mp4",
         expungeSegments: ["2-4"],
+      },
+      {
+        placement: {
+          xAlign: "center",
+          xMargin: "10%",
+          yAlign: "middle",
+          yMargin: "10%",
+        },
+        type: "watermark",
+        url: "https://static.fastpix.io/watermark-4k.png",
+        width: "25%",
+        height: "25%",
+        opacity: "80%",
+      },
+      {
+        type: "audio",
+        swapTrackUrl:
+          "https://file-examples.com/storage/fe0e9b723466913cf9611b7/2017/11/file_example_MP3_700KB.mp3",
+        imposeTracks: [
+          {
+            url: "https://muxed.s3.amazonaws.com/example-impose-audio-track.m4a",
+            startTime: 0,
+            endTime: 5,
+            fadeInLevel: 1,
+            fadeOutLevel: 4,
+          },
+          {
+            url: "https://muxed.s3.amazonaws.com/example-impose-audio-track.m4a",
+            startTime: 0,
+            endTime: 5,
+            fadeInLevel: 1,
+            fadeOutLevel: 4,
+          },
+        ],
       },
     ],
     mp4Support: "capped_4k",

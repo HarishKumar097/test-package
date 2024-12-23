@@ -6,7 +6,6 @@ import type {
 } from "../Types";
 
 class Fetcher {
-
   // Fetches data from the specified URL using the provided headers.
   async fetchData(url: string, header: HeaderOptions): Promise<FetchResponse> {
     if (!url || !header) {
@@ -68,6 +67,7 @@ class Fetcher {
   ): string {
     const protocol = requestObj?.httpAgent || "https";
     const domain = requestObj?.domain || "v1.fastpix.io";
+
     return `${protocol}://${domain}/${path}${queryParams}`;
   }
 

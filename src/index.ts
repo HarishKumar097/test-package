@@ -15,22 +15,21 @@ import type {
   UpdateSimulcastProps,
 } from "./Types";
 
-import Media from "./Media";
+import Media from "./VideoOnDemand";
 import LiveStream from "./Live";
 
 class FastPix {
-  private accessTokenId: string; // Access token ID for authentication
-  private secretKey: string; // Secret key for authentication
-  private mediaService: Media | null = null; // Media service instance
-  private liveStream: LiveStream | null = null; // Live stream service instance
-  private encodedAuthToken: string | undefined; // Encoded authorization token
-  private RequestObject: RequestObject; // Request configuration object
+  accessTokenId: string; // Access token ID for authentication
+  secretKey: string; // Secret key for authentication
+  mediaService: Media | null = null; // Media service instance
+  liveStream: LiveStream | null = null; // Live stream service instance
+  encodedAuthToken: string | undefined; // Encoded authorization token
+  RequestObject: RequestObject; // Request configuration object
 
   constructor(props: { accessTokenId: string; secretKey: string }) {
     this.accessTokenId = props?.accessTokenId;
     this.secretKey = props?.secretKey;
-    this.validateSecrets(); // Validate the provided credentials
-
+    this.validateSecrets();
     this.mediaService = new Media();
     this.liveStream = new LiveStream();
 
