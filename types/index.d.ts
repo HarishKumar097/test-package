@@ -3,8 +3,8 @@ type ErrorField = { key: string; value: string };
 
 // Interface for pagination options
 export interface PaginationProps {
-  limit?: number;
-  offset?: number;
+  limit?: number | string;
+  offset?: number | string;
   orderBy?: string;
 }
 
@@ -62,7 +62,7 @@ export interface ConfigErrorResponse {
 export interface RequestObject {
   httpAgent?: string;
   domain?: string;
-  encodedAuthToken?: string | undefined;
+  encodedAuthToken?: string;
   method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
   body?: Record<string, any> | {};
 }
@@ -154,17 +154,23 @@ interface VideoInput {
   type?: string; // required
   url?: string; // required
   watermark?: Watermark;
+  placement?: WatermarkPlacement;
+  opacity?: string;
+  swapTrackUrl?: string;
   audio?: Audio;
   startTime?: number;
   endTime?: number;
   introUrl?: string;
   outroUrl?: string;
+  width?: string;
+  height?: string;
   expungeSegments?: string[];
+  imposeTracks?: ImposeTrack[];
 }
 
 interface Subtitle {
   metadata?: Record<string, string>; // Key-value pairs for metadata
-  name?: string;
+  languageName?: string;
   languageCode?: string;
 }
 

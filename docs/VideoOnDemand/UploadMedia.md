@@ -85,7 +85,7 @@ If the media type is `"audio"`, the following parameters are relevant:
 | **Parameter**     | **Description**                                             | **Type** | **Accepted Values**                                            |
 | ----------------- | ----------------------------------------------------------- | -------- | -------------------------------------------------------------- |
 | `metadata`        | Metadata key-value pairs for the subtitles. Optional field. | Object   | Key-value pairs (max 255 characters per key-value pair).       |
-| `name` (required) | Name of the language for the subtitles.                     | String   | Any string, such as `"English"`, `"French"`, `"Spanish"`, etc. |
+| `languageName` (required) | Name of the language for the subtitles.                     | String   | Any string, such as `"English"`, `"French"`, `"Spanish"`, etc. |
 | `languageCode`    | BCP 47 compliant language code (e.g., `"en"` for English).  | String   | Any valid BCP 47 language code (e.g., `"en"`, `"fr"`, `"es"`)  |
 
 ### Example Request:
@@ -100,7 +100,7 @@ const uploadMedia = await fastpix.uploadMediaFromUrl({
       newKey: "New Value",
       "newKey-1": "New Value",
     },
-    name: "english",
+    languageName: "english",
     languageCode: "en",
   },
   accessPolicy: "public", // required
@@ -111,7 +111,7 @@ const uploadMedia = await fastpix.uploadMediaFromUrl({
       type: "video", // required
       url: "https://static.fastpix.io/sample.mp4", //required
       startTime: 0,
-      endTime: 60,
+      endTime: 5,
       introUrl: "https://static.fastpix.io/sample.mp4",
       outroUrl: "https://static.fastpix.io/sample.mp4",
       expungeSegments: ["3-5", "6-8"],
@@ -252,7 +252,7 @@ If the media type is `"audio"`, the following parameters are relevant:
 | **Parameter**     | **Description**                                             | **Type** | **Accepted Values**                                            |
 | ----------------- | ----------------------------------------------------------- | -------- | -------------------------------------------------------------- |
 | `metadata`        | Metadata key-value pairs for the subtitles. Optional field. | Object   | Key-value pairs (max 255 characters per key-value pair).       |
-| `name` (required) | Name of the language for the subtitles.                     | String   | Any string, such as `"English"`, `"French"`, `"Spanish"`, etc. |
+| `languageName` (required) | Name of the language for the subtitles.                     | String   | Any string, such as `"English"`, `"French"`, `"Spanish"`, etc. |
 | `languageCode`    | BCP 47 compliant language code (e.g., `"en"` for English).  | String   | Any valid BCP 47 language code (e.g., `"en"`, `"fr"`, `"es"`)  |
 
 ### Example Request:
@@ -262,16 +262,16 @@ const uploadMedia = await fastpix.uploadMediaFromDevice({
   pushMediaSettings: {
     accessPolicy: "public",
     metadata: { newKey: "New Value" },
-    subtitles: { name: "english", languageCode: "en" },
+    subtitles: { languageName: "english", languageCode: "en" },
     optimizeAudio: true,
     maxResolution: "1080p",
     startTime: 0,
-    endTime: 60,
+    endTime: 5,
     inputs: [
       {
         type: "video",
         startTime: 0,
-        endTime: 60,
+        endTime: 5,
         introUrl: "https://static.fastpix.io/sample.mp4",
         outroUrl: "https://static.fastpix.io/sample.mp4",
         expungeSegments: ["2-4"],

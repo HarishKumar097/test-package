@@ -7,7 +7,7 @@ import type {
   UpdateObject,
   UploadMediaFromUrlProps,
   FetcherProps,
-} from "../Types";
+} from "../../types";
 
 import Fetcher from "../NetworkFetcher";
 
@@ -22,8 +22,8 @@ class Media {
 
   // Creates a new media asset.
   async createAsset(
-    props: UploadMediaFromUrlProps = {},
-    requestObj: RequestObject
+    requestObj: RequestObject,
+    props: UploadMediaFromUrlProps = {}
   ) {
     const path = this.mediaPath;
     const url = this.fetch.constructUrl(requestObj, path);
@@ -44,14 +44,14 @@ class Media {
 
   // Uploads a media asset using direct upload.
   async uploadAsset(
+    requestObj: RequestObject,
     props: DirectUploadRequest = {
       corsOrigin: "",
       pushMediaSettings: {
         accessPolicy: "public", // Default access policy
         inputs: [], // Default empty array for inputs (inside pushMediaSettings)
       },
-    },
-    requestObj: RequestObject
+    }
   ) {
     const path = `${this.mediaPath}/uploads`;
     const url = this.fetch.constructUrl(requestObj, path);
@@ -83,7 +83,7 @@ class Media {
   // Retrieves all media assets with pagination support.
   async getAllAssets(props?: PaginationProps, requestObj?: RequestObject) {
     const path = this.mediaPath;
-    const queryParams = `?limit=${props?.limit || 10}&offset=${props?.offset || 1}&orderBy=${props?.orderBy || "desc"}`;
+    const queryParams = `?limit=${props?.limit ?? 10}&offset=${props?.offset ?? 1}&orderBy=${props?.orderBy ?? "desc"}`;
     const url = this.fetch.constructUrl(requestObj, path, queryParams);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -97,7 +97,7 @@ class Media {
 
   // Retrieves details of a specific media asset.
   async getAsset(props: MediaProps, requestObj: RequestObject) {
-    const path = `${this.mediaPath}/${props?.mediaId || ""}`;
+    const path = `${this.mediaPath}/${props?.mediaId ?? ""}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -111,7 +111,7 @@ class Media {
 
   // Retrieves detailed information about a media asset's input.
   async getAssetInfo(props: MediaProps, requestObj: RequestObject) {
-    const path = `${this.mediaPath}/${props?.mediaId || ""}/input-info`;
+    const path = `${this.mediaPath}/${props?.mediaId ?? ""}/input-info`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -132,13 +132,13 @@ class Media {
     updateObject: UpdateObject,
     requestObj: RequestObject
   ) {
-    const path = `${this.mediaPath}/${props?.mediaId || ""}`;
+    const path = `${this.mediaPath}/${props?.mediaId ?? ""}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
       method: "PATCH",
       body: {
-        ...(updateObject || {}),
+        ...(updateObject ?? {}),
       },
     };
     const updateAssetHeader = this.fetch.constructHeaders(constructObject);
@@ -152,7 +152,7 @@ class Media {
 
   // Deletes a media asset.
   async deleteAsset(props: MediaProps, requestObj: RequestObject) {
-    const path = `${this.mediaPath}/${props?.mediaId || ""}`;
+    const path = `${this.mediaPath}/${props?.mediaId ?? ""}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -173,13 +173,13 @@ class Media {
     playbackPolicy: AccessPolicy,
     requestObj: RequestObject
   ) {
-    const path = `${this.mediaPath}/${props?.mediaId || ""}/playback-ids`;
+    const path = `${this.mediaPath}/${props?.mediaId ?? ""}/playback-ids`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
       method: "POST",
       body: {
-        accessPolicy: playbackPolicy?.accessPolicy || "public",
+        accessPolicy: playbackPolicy?.accessPolicy ?? "public",
       },
     };
     const createPlaybackIdHeader = this.fetch.constructHeaders(constructObject);
@@ -193,14 +193,17 @@ class Media {
 
   // Removes a playback ID from a media asset.
   async removeMediaPlaybackId(props: MediaProps, requestObj: RequestObject) {
-    const path = `${this.mediaPath}/${props?.mediaId || ""}/playback-ids`;
+    const path = `${this.mediaPath}/${props?.mediaId ?? ""}/playback-ids`;
 
     let queryParams = "";
     if (props?.playbackId) {
       if (Array.isArray(props.playbackId)) {
-        queryParams = `?${props.playbackId.map((id) => `playbackId=${id}`).join("&")}`;
+        const playbackIdParams = props.playbackId.map(
+          (id) => "playbackId=" + id
+        );
+        queryParams = "?" + playbackIdParams.join("&");
       } else if (typeof props.playbackId === "string") {
-        queryParams = `?playbackId=${props.playbackId}`;
+        queryParams = "?playbackId=" + props.playbackId;
       }
     }
 

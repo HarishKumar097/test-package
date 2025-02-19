@@ -3,7 +3,7 @@ import type {
   FetchResponse,
   ConfigErrorResponse,
   RequestObject,
-} from "../Types";
+} from "../../types";
 
 class Fetcher {
   // Fetches data from the specified URL using the provided headers.
@@ -31,8 +31,8 @@ class Fetcher {
           error: {
             code: response.status,
             message:
-              errorResponse?.error?.message ||
-              response.statusText ||
+              errorResponse?.error?.message ??
+              response.statusText ??
               "An unexpected error occurred",
           },
         };
@@ -48,13 +48,13 @@ class Fetcher {
       return {
         success: false,
         error: {
-          code: response.status || 500,
-          message: response.statusText || "An internal server error occurred.",
+          code: response.status ?? 500,
+          message: response.statusText ?? "An internal server error occurred.",
         },
       };
     } catch (error: any) {
       throw new Error(
-        `An error occurred while fetching data: ${error?.message || "Internal error"}`
+        `An error occurred while fetching data: ${error?.message ?? "Internal error"}`
       );
     }
   }
@@ -65,8 +65,8 @@ class Fetcher {
     path: string = "",
     queryParams: string = ""
   ): string {
-    const protocol = requestObj?.httpAgent || "https";
-    const domain = requestObj?.domain || "v1.fastpix.io";
+    const protocol = requestObj?.httpAgent ?? "https";
+    const domain = requestObj?.domain ?? "v1.fastpix.io";
 
     return `${protocol}://${domain}/${path}${queryParams}`;
   }
@@ -77,7 +77,7 @@ class Fetcher {
       throw new Error("Authorization credentials are missing.");
     }
 
-    const method = requestObj?.method || "GET";
+    const method = requestObj?.method ?? "GET";
     const headers = {
       "Content-Type": "application/json",
       Authorization: `Basic ${requestObj.encodedAuthToken}`,

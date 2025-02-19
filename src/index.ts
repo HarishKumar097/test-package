@@ -13,12 +13,12 @@ import type {
   UpdateObject,
   InitiateLiveStreamProps,
   UpdateSimulcastProps,
-} from "./Types";
+} from "../types";
 
 import Media from "./VideoOnDemand";
 import LiveStream from "./Live";
 
-class FastPix {
+class Client {
   accessTokenId: string; // Access token ID for authentication
   secretKey: string; // Secret key for authentication
   mediaService: Media | null = null; // Media service instance
@@ -65,14 +65,14 @@ class FastPix {
   // Uploads media from a given URL
   uploadMediaFromUrl(props: UploadMediaFromUrlProps) {
     return this.mediaService
-      ? this.mediaService.createAsset(props, this.RequestObject)
+      ? this.mediaService.createAsset(this.RequestObject, props)
       : null;
   }
 
   // Uploads media from a file input.
   uploadMediaFromDevice(props: DirectUploadRequest) {
     return this.mediaService
-      ? this.mediaService.uploadAsset(props, this.RequestObject)
+      ? this.mediaService.uploadAsset(this.RequestObject, props)
       : null;
   }
 
@@ -239,4 +239,4 @@ class FastPix {
   }
 }
 
-export default FastPix;
+export default Client;

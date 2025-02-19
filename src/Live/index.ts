@@ -10,7 +10,7 @@ import type {
   UpdateSimulcastProps,
   FetcherProps,
   HeaderOptions,
-} from "../Types";
+} from "../../types";
 
 import Fetcher from "../NetworkFetcher";
 
@@ -35,8 +35,7 @@ class LiveStream {
       method: "POST",
       body: {
         playbackSettings: {
-          accessPolicy:
-            String(props?.playbackSettings?.accessPolicy) || "public",
+          accessPolicy: props?.playbackSettings?.accessPolicy ?? "public",
         },
         inputMediaSettings: {
           ...props?.inputMediaSettings,
@@ -55,7 +54,7 @@ class LiveStream {
   // Retrieves all live streams with pagination support.
   async getAllLiveStreams(props?: PaginationProps, requestObj?: RequestObject) {
     const path = this.livePath;
-    const queryParams = `?limit=${props?.limit || 10}&offset=${props?.offset || 1}&orderBy=${props?.orderBy || "desc"}`;
+    const queryParams = `?limit=${props?.limit ?? 10}&offset=${props?.offset ?? 1}&orderBy=${props?.orderBy ?? "desc"}`;
     const url = this.fetch.constructUrl(requestObj, path, queryParams);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -72,7 +71,7 @@ class LiveStream {
 
   // Retrieves details of a specific live stream.
   async getLiveStream(props: LiveStreamProps, requestObj: RequestObject) {
-    const path = `${this.livePath}/${props?.streamId || ""}`;
+    const path = `${this.livePath}/${props?.streamId ?? ""}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -93,13 +92,13 @@ class LiveStream {
     updateObject: UpdateObject,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId || ""}`;
+    const path = `${this.livePath}/${props?.streamId ?? ""}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
       method: "PATCH",
       body: {
-        ...(updateObject || {}),
+        ...(updateObject ?? {}),
       },
     };
     const updateLiveStreamHeader: HeaderOptions =
@@ -114,7 +113,7 @@ class LiveStream {
 
   // Deletes a specific live stream.
   async deleteLiveStream(props: LiveStreamProps, requestObj: RequestObject) {
-    const path = `${this.livePath}/${props?.streamId || ""}`;
+    const path = `${this.livePath}/${props?.streamId ?? ""}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -136,13 +135,13 @@ class LiveStream {
     playbackPolicy: AccessPolicy,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId || ""}/playback-ids`;
+    const path = `${this.livePath}/${props?.streamId ?? ""}/playback-ids`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
       method: "POST",
       body: {
-        accessPolicy: playbackPolicy?.accessPolicy || "public",
+        accessPolicy: playbackPolicy?.accessPolicy ?? "public",
       },
     };
     const createPlaybackIdHeader = this.fetch.constructHeaders(constructObject);
@@ -159,14 +158,17 @@ class LiveStream {
     props: LiveStreamProps,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId || ""}/playback-ids`;
+    const path = `${this.livePath}/${props?.streamId ?? ""}/playback-ids`;
 
     let queryParams = "";
     if (props?.playbackId) {
       if (Array.isArray(props.playbackId)) {
-        queryParams = `?${props.playbackId.map((id) => `playbackId=${id}`).join("&")}`;
+        const playbackIdParams = props.playbackId.map(
+          (id) => "playbackId=" + id
+        );
+        queryParams = "?" + playbackIdParams.join("&");
       } else if (typeof props.playbackId === "string") {
-        queryParams = `?playbackId=${props.playbackId}`;
+        queryParams = "?playbackId=" + props.playbackId;
       }
     }
 
@@ -189,7 +191,7 @@ class LiveStream {
     props: LiveStreamProps,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId || ""}/playback-ids/${props?.playbackId}`;
+    const path = `${this.livePath}/${props?.streamId ?? ""}/playback-ids/${props?.playbackId}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -211,7 +213,7 @@ class LiveStream {
     liveStreamObj: SimulcastObject,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId || ""}/simulcast`;
+    const path = `${this.livePath}/${props?.streamId ?? ""}/simulcast`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -234,7 +236,7 @@ class LiveStream {
     props: SimulcastProps,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId || ""}/simulcast/${props?.simulcastId}`;
+    const path = `${this.livePath}/${props?.streamId ?? ""}/simulcast/${props?.simulcastId}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -255,7 +257,7 @@ class LiveStream {
     simulcastObj: UpdateSimulcastProps,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId || ""}/simulcast/${props?.simulcastId}`;
+    const path = `${this.livePath}/${props?.streamId ?? ""}/simulcast/${props?.simulcastId}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,
@@ -278,7 +280,7 @@ class LiveStream {
     props: SimulcastProps,
     requestObj: RequestObject
   ) {
-    const path = `${this.livePath}/${props?.streamId || ""}/simulcast/${props?.simulcastId}`;
+    const path = `${this.livePath}/${props?.streamId ?? ""}/simulcast/${props?.simulcastId}`;
     const url = this.fetch.constructUrl(requestObj, path);
     const constructObject: RequestObject = {
       ...requestObj,

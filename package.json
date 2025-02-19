@@ -1,24 +1,26 @@
 {
   "name": "server-node-sdk",
-  "version": "1.2.4",
-  "description": "The offcial Typescript sdk for the FastPix API",
+  "version": "1.2.5",
+  "description": "The official FastPix API SDK for Node.js, written in TypeScript",
   "types": "dist/index.d.ts",
   "main": "dist/index.mjs",
   "type": "commonjs",
+  "files": [
+    "dist/*",
+    "types/*"
+  ],
   "exports": {
     ".": {
       "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts",
-      "default": "./dist/index.mjs"
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.js"
     }
   },
-  "files": [
-    "dist/*"
-  ],
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
-    "build:cjs": "esbuild src/index.ts --bundle --minify --outfile=dist/index.cjs --platform=node --format=cjs",
-    "build:esm": "esbuild src/index.ts --bundle --minify  --outfile=dist/index.mjs --platform=node --format=esm",
+    "build:cjs": "esbuild src/index.ts --bundle --outfile=dist/index.cjs --platform=node --format=cjs",
+    "build:esm": "esbuild src/index.ts --bundle --outfile=dist/index.mjs --platform=node --format=esm",
     "build:types": "tsc",
     "build": "npm run format && npm run build:esm && npm run build:cjs && npm run build:types"
   },
@@ -28,6 +30,7 @@
     "@types/node": "^22.10.1",
     "esbuild": "^0.24.0",
     "prettier": "^3.4.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   }
 }
