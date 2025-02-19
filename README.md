@@ -1,6 +1,6 @@
 # Introduction:
 
-The Fastpix Node.js SDK, written in typescript, simplifies integration with the FastPix platform. This SDK is designed for secure and efficient communication with the FastPix API, enabling easy management of media uploads, live streaming, and simulcasting. It is intended for use with Node.js (version >= 18).
+The FastPix Node.js SDK, written in typescript, simplifies integration with the FastPix platform. This SDK is designed for secure and efficient communication with the FastPix API, enabling easy management of media uploads, live streaming, and simulcasting. It is intended for use with Node.js (version >= 18).
 
 # Key Features:
 
@@ -33,7 +33,7 @@ To get started with the **FastPix Node SDK**, ensure you have the following:
 To install the SDK, you can use npm or your favourite node package manager 😉:
 
 ```bash
-npm install server-node-sdk
+npm install @fastpix/node-sdk
 ```
 
 # Basic Usage:
@@ -47,7 +47,7 @@ Depending on your project setup, you can import the SDK using either `import` or
 If your project supports ES Modules, use the `import` syntax:
 
 ```javascript
-import FastPix from "server-node-sdk";
+import Client from "@fastpix/node-sdk";
 ```
 
 ### Using `require` (CommonJS)
@@ -55,7 +55,7 @@ import FastPix from "server-node-sdk";
 If you're using CommonJS modules, you can use `require`:
 
 ```javascript
-const FastPix = require("server-node-sdk").default;
+const Client = require("@fastpix/node-sdk").default;
 ```
 
 # Initialization:
@@ -63,9 +63,9 @@ const FastPix = require("server-node-sdk").default;
 Initialize the FastPix SDK with your API credentials.
 
 ```javascript
-import FastPix from "server-node-sdk";
+import Client from "@fastpix/node-sdk";
 
-const fastpix = new FastPix({
+const fastpix = new Client({
   accessTokenId: "your-access-token-id",
   secretKey: "your-secret-key",
 });
@@ -77,13 +77,13 @@ Below is an example of configuring `FastPix Node SDK` into your project.
 
 ```javascript
 // Using import (ES Modules)
-import FastPix from "server-node-sdk";
+import Client from "@fastpix/node-sdk";
 
 // or using require (CommonJS)
-// const FastPix = require("server-node-sdk").default;
+// const Client = require("@fastpix/node-sdk").default;
 
 // Initialize the FastPix SDK with your Access Token ID and Secret Key
-const fastpix = new FastPix({
+const fastpix = new Client({
   accessTokenId: "your-access-token-id", // Replace with your Access Token ID
   secretKey: "your-secret-key", // Replace with your Secret Key
 });
@@ -119,7 +119,7 @@ main();
 
 #### Upload Media from a URL:
 
-Use the `uploadMediaFromUrl` method to upload media directly from a URL. For detailed configuration options, refer to the [Create media from URL](./docs/VideoOnDemand/ManageMedia.md#Method-getAllMediaAssets) API documentation.
+Use the `uploadMediaFromUrl` method to upload media directly from a URL. For detailed configuration options, refer to the [Create media from URL](./docs/VideoOnDemand/UploadMedia.md#method-uploadmediafromurl) API documentation.
 
 ```javascript
 // Define the request payload for uploading media from a URL.
@@ -143,7 +143,7 @@ console.log("Upload Response:", mediaFromUrlResponse);
 
 #### Upload Media from a Local Device:
 
-Use the `uploadMediaFromDevice` method to obtain a `signedUrl` and upload media directly from a local device. For more details on configuration options, refer to the [Upload media from device](https://docs.fastpix.io/reference/direct-upload-video-media) API documentation.
+Use the `uploadMediaFromDevice` method to obtain a `signedUrl` and upload media directly from a local device. For more details on configuration options, refer to the [Upload media from device](./docs/VideoOnDemand/UploadMedia.md#method-uploadmediafromdevice) API documentation.
 
 ```javascript
 // Define the request payload for uploading media from a device.
@@ -166,7 +166,7 @@ console.log("Upload Response:", mediaFromDeviceResponse);
 
 #### Get List of All Media:
 
-Use the `getAllMediaAssets` method to fetch a list of all media assets. You can customize the query by modifying parameters such as `limit`, `offset`, and `orderBy`. Refer to the [Get list of all media](https://docs.fastpix.io/reference/list-media) API documentation for the accepted values.
+Use the `getAllMediaAssets` method to fetch a list of all media assets. You can customize the query by modifying parameters such as `limit`, `offset`, and `orderBy`. Refer to the [Get list of all media](./docs/VideoOnDemand/ManageMedia.md#method-getallmediaassets) API documentation for the accepted values.
 
 ```javascript
 // Define the parameters for fetching media assets in a separate variable.
@@ -182,7 +182,7 @@ console.log("Fetched Media Assets:", mediaAssets);
 
 #### Get Media Asset by ID:
 
-Use the `getMediaAssetById` method to retrieve a specific media asset by its ID. Provide `mediaId`of the asset to fetch its details. Refer to the [Get a media by ID](https://docs.fastpix.io/reference/get-media) API documentation for more details.
+Use the `getMediaAssetById` method to retrieve a specific media asset by its ID. Provide `mediaId`of the asset to fetch its details. Refer to the [Get a media by ID](./docs/VideoOnDemand/ManageMedia.md#method-getmediaassetbyid) API documentation for more details.
 
 ```javascript
 // Define the parameter for fetching a specific media asset by ID.
@@ -196,7 +196,7 @@ console.log("Retrieved media asset by ID:", getMediaAsset);
 
 #### Update Media Asset:
 
-Use the `updateMediaAsset` method to update metadata or other properties of a specific media asset. Provide the `mediaId` of the asset along with the metadata to be updated. Refer to the [Update a media by ID](https://docs.fastpix.io/reference/updated-media) API documentation for more details.
+Use the `updateMediaAsset` method to update metadata or other properties of a specific media asset. Provide the `mediaId` of the asset along with the metadata to be updated. Refer to the [Update a media by ID](./docs/VideoOnDemand/ManageMedia.md#method-updatemediaasset) API documentation for more details.
 
 ```javascript
 // Define the parameter for specifying the media asset to be updated.
@@ -221,7 +221,7 @@ console.log("Updated Media Asset:", updateMediaAsset);
 
 #### Delete Media Asset:
 
-Use the `deleteMediaAsset` method to delete a specific media asset by its ID. Pass the `mediaId` of the asset you want to delete. Refer to the [Delete a media by ID](https://docs.fastpix.io/reference/delete-media) API documentation for more information.
+Use the `deleteMediaAsset` method to delete a specific media asset by its ID. Pass the `mediaId` of the asset you want to delete. Refer to the [Delete a media by ID](./docs/VideoOnDemand/ManageMedia.md#method-deletemediaasset) API documentation for more information.
 
 ```javascript
 // Define the parameter for specifying the media asset to be deleted.
@@ -235,7 +235,7 @@ console.log("Deleted Media Asset:", deleteMediaAsset);
 
 #### Get Media Asset Info:
 
-Use the `getMediaAssetInfo` method to retrieve detailed information about a specific media asset. Pass the `mediaId` to fetch its details. Refer to the [Get info of media inputs](https://docs.fastpix.io/reference/retrievemediainputinfo) API documentation for more details.
+Use the `getMediaAssetInfo` method to retrieve detailed information about a specific media asset. Pass the `mediaId` to fetch its details. Refer to the [Get info of media inputs](./docs/VideoOnDemand/ManageMedia.md#method-getmediaassetinfo) API documentation for more details.
 
 ```javascript
 // Define the parameter for specifying the media asset whose info is to be retrieved.
@@ -251,7 +251,7 @@ console.log("Media Asset Info:", getMediaInfo);
 
 #### Generate Media Playback ID:
 
-Use the `generateMediaPlaybackId` method to generate a playback ID for a specific media asset. You can pass an `mediaId` and configure options such as the `accessPolicy`. For detailed configuration options, refer to the [Create a playback ID](https://docs.fastpix.io/reference/create-media-playback-id) API documentation.
+Use the `generateMediaPlaybackId` method to generate a playback ID for a specific media asset. You can pass an `mediaId` and configure options such as the `accessPolicy`. For detailed configuration options, refer to the [Create a playback ID](./docs/VideoOnDemand/ManageMediaPlayback.md#method-generatemediaplaybackid) API documentation.
 
 ```javascript
 // Define the mediaId and accessPolicy dynamically
@@ -273,7 +273,7 @@ console.log("Playback ID Creation Response:", playbackIdResponse);
 
 #### Delete Media Playback ID:
 
-Use the `deleteMediaPlaybackId` method to delete one or more playback IDs associated with a specific media asset. This method allows you to specify both the `mediaId` and the `playbackId` you wish to delete. This method supports deleting a **single playback ID** as a string or **multiple playback IDs** as an array of strings. For detailed configuration options, refer to the [Delete a playback ID](https://docs.fastpix.io/reference/delete-media-playback-id) API documentation.
+Use the `deleteMediaPlaybackId` method to delete one or more playback IDs associated with a specific media asset. This method allows you to specify both the `mediaId` and the `playbackId` you wish to delete. This method supports deleting a **single playback ID** as a string or **multiple playback IDs** as an array of strings. For detailed configuration options, refer to the [Delete a playback ID](./docs/VideoOnDemand/ManageMediaPlayback.md#method-deletemediaplaybackid) API documentation.
 
 ```javascript
 const mediaId = "media-id"; // The ID of the media asset for which you want to delete the playback ID.
@@ -297,7 +297,7 @@ console.log("Playback ID Deletion Response:", deletePlaybackResponse);
 
 ### 2.1. Start Live Stream:
 
-Use the `initiateLiveStream` method to start a live stream with specific configurations. For detailed configuration options, refer to the [Create a new stream](https://docs.fastpix.io/reference/create-new-stream) API documentation.
+Use the `initiateLiveStream` method to start a live stream with specific configurations. For detailed configuration options, refer to the [Create a new stream](./docs/Live/CreateLiveStream.md#method-initiatelivestream) API documentation.
 
 ```javascript
 const liveStreamRequest = {
@@ -324,7 +324,7 @@ console.log("Live Stream initiated successfully:", generateLiveStream);
 
 #### Get List of All Live Streams:
 
-Use the `getAllLiveStreams` method to fetch a list of all live streams. You can customize the query by modifying parameters such as `limit`, `offset`, and `orderBy`. For detailed configuration options, refer to the [Get all live streams](https://docs.fastpix.io/reference/get-all-streams) API documentation.
+Use the `getAllLiveStreams` method to fetch a list of all live streams. You can customize the query by modifying parameters such as `limit`, `offset`, and `orderBy`. For detailed configuration options, refer to the [Get all live streams](./docs/Live/ManageLiveStreams.md#method-getalllivestreams) API documentation.
 
 ```javascript
 const getAllLiveStreamPagination = {
@@ -341,7 +341,7 @@ console.log("All Live Streams:", getAllLiveStreams);
 
 #### Get Live Stream by ID:
 
-Use the `getLiveStreamById` method to retrieve a specific live stream by its ID. Provide the `streamId` of the stream you wish to fetch. For more details, refer to the [Get stream by ID](https://docs.fastpix.io/reference/get-live-stream-by-id) API documentation.
+Use the `getLiveStreamById` method to retrieve a specific live stream by its ID. Provide the `streamId` of the stream you wish to fetch. For more details, refer to the [Get stream by ID](./docs/Live/ManageLiveStreams.md#method-getlivestreambyid) API documentation.
 
 ```javascript
 const getLiveStreamById = await fastpix.getLiveStreamById({
@@ -353,7 +353,7 @@ console.log("Live Stream Details:", getLiveStreamById);
 
 #### Update Live Stream:
 
-Use the `updateLiveStream` method to update a live stream's configuration. Provide the `streamId` of the stream and specify the fields you want to update. For more details, refer to the [Update a stream](https://docs.fastpix.io/reference/update-live-stream) API documentation.
+Use the `updateLiveStream` method to update a live stream's configuration. Provide the `streamId` of the stream and specify the fields you want to update. For more details, refer to the [Update a stream](./docs/Live/ManageLiveStreams.md#method-updatelivestream) API documentation.
 
 ```javascript
 const updateLiveStreamRequest = {
@@ -373,7 +373,7 @@ console.log("Updated Live Stream:", updateLiveStream);
 
 #### Delete Live Stream:
 
-Use the `deleteLiveStream` method to delete a live stream by its ID. Provide `streamId` of the stream you want to delete. For more details, refer to the [Delete a stream](https://docs.fastpix.io/reference/delete-live-stream) API documentation.
+Use the `deleteLiveStream` method to delete a live stream by its ID. Provide `streamId` of the stream you want to delete. For more details, refer to the [Delete a stream](./docs/Live/ManageLiveStreams.md#method-deletelivestream) API documentation.
 
 ```javascript
 const deleteLiveStream = await fastpix.deleteLiveStream({
@@ -386,7 +386,7 @@ console.log("Deleted Live Stream:", deleteLiveStream);
 
 #### Generate Live Stream Playback ID:
 
-Use the `generateLiveStreamPlaybackId` method to generate a playback ID for a live stream. Replace `streamId` with the actual ID of the live stream and specify the desired `accessPolicy`. For more details, refer to the [Create a playback ID](https://docs.fastpix.io/reference/create-playbackid-of-stream) API documentation.
+Use the `generateLiveStreamPlaybackId` method to generate a playback ID for a live stream. Replace `streamId` with the actual ID of the live stream and specify the desired `accessPolicy`. For more details, refer to the [Create a playback ID](./docs/Live/ManageStreamPlayback.md#method-generatelivestreamplaybackid) API documentation.
 
 ```javascript
 const generateLiveStreamPlaybackId = await fastpix.generateLiveStreamPlaybackId(
@@ -399,7 +399,7 @@ console.log("Generated Live Stream Playback ID:", generateLiveStreamPlaybackId);
 
 #### Delete Live Stream Playback ID:
 
-Use the `deleteLiveStreamPlaybackId` method to remove one or more playback IDs associated with a live stream. This method allows you to specify the `streamId` of the live stream, and the `playbackId` you wish to delete. This method supports deleting a **single playback ID** as a string or **multiple playback IDs** as an array of strings. For more details, refer to the [Delete a playback ID](https://docs.fastpix.io/reference/delete-playbackid-of-stream) API documentation.
+Use the `deleteLiveStreamPlaybackId` method to remove one or more playback IDs associated with a live stream. This method allows you to specify the `streamId` of the live stream, and the `playbackId` you wish to delete. This method supports deleting a **single playback ID** as a string or **multiple playback IDs** as an array of strings. For more details, refer to the [Delete a playback ID](./docs/Live/ManageStreamPlayback.md#method-deletelivestreamplaybackid) API documentation.
 
 ```javascript
 // Define the streamId and playbackId dynamically
@@ -421,7 +421,7 @@ console.log("Deleted Live Stream Playback ID:", deleteLiveStreamPlaybackId);
 
 #### Get Live Stream Playback Policy:
 
-Use the `getLiveStreamPlaybackPolicy` method to retrieve the playback policy for a specific live stream playback ID. Replace `streamId` with the stream's ID and `playbackId` with the actual playback ID to fetch the policy. For more details, refer to the [Get stream's playback ID](https://docs.fastpix.io/reference/get-live-stream-playback-id) API documentation.
+Use the `getLiveStreamPlaybackPolicy` method to retrieve the playback policy for a specific live stream playback ID. Replace `streamId` with the stream's ID and `playbackId` with the actual playback ID to fetch the policy. For more details, refer to the [Get stream's playback ID](./docs/Live/ManageStreamPlayback.md#method-getlivestreamplaybackpolicy) API documentation.
 
 ```javascript
 const getLiveStreamPlaybackPolicy = await fastpix.getLiveStreamPlaybackPolicy({
@@ -436,7 +436,7 @@ console.log("Live Stream Playback Policy:", getLiveStreamPlaybackPolicy);
 
 #### Initiate Live Stream Simulcast:
 
-Use the `initiateLiveStreamSimulcast` method to create a new simulcast for a live stream. Provide the stream ID and simulcast payload with the URL and stream key. For more details, refer to the [Create a simulcast](https://docs.fastpix.io/reference/create-simulcast-of-stream) API documentation.
+Use the `initiateLiveStreamSimulcast` method to create a new simulcast for a live stream. Provide the stream ID and simulcast payload with the URL and stream key. For more details, refer to the [Create a simulcast](./docs/Live/ManageStreamSimulcast.md#method-initiatelivestreamsimulcast) API documentation.
 
 ```javascript
 const simulcastPayload = {
@@ -457,7 +457,7 @@ console.log("Generate Simulcast:", generateSimulcast);
 
 #### Get Live Stream Simulcast:
 
-Use the `getLiveStreamSimulcast` method to retrieve details of a specific simulcast stream. Provide the `streamId` and `simulcastId` of the simulcast you want to fetch. For more details, refer to the [Get a specific simulcast of a stream](https://docs.fastpix.io/reference/get-specific-simulcast-of-stream) API documentation.
+Use the `getLiveStreamSimulcast` method to retrieve details of a specific simulcast stream. Provide the `streamId` and `simulcastId` of the simulcast you want to fetch. For more details, refer to the [Get a specific simulcast of a stream](./docs/Live/ManageStreamSimulcast.md#method-getlivestreamsimulcast) API documentation.
 
 ```javascript
 const getLiveSimulcast = await fastpix.getLiveStreamSimulcast({
@@ -470,7 +470,7 @@ console.log("Live Stream Simulcast Details:", getLiveSimulcast);
 
 #### Update Live Stream Simulcast:
 
-Use the `updateLiveStreamSimulcast` method to update the configuration of a simulcast stream. Provide the `streamId`, `simulcastId`, and the fields you want to update. For more details, refer to the [Update a specific simulcast of a stream](https://docs.fastpix.io/reference/update-specific-simulcast-of-stream) API documentation.
+Use the `updateLiveStreamSimulcast` method to update the configuration of a simulcast stream. Provide the `streamId`, `simulcastId`, and the fields you want to update. For more details, refer to the [Update a specific simulcast of a stream](./docs/Live/ManageStreamSimulcast.md#method-updatelivestreamsimulcast) API documentation.
 
 ```javascript
 const updateLiveSimulcast = await fastpix.updateLiveStreamSimulcast(
@@ -491,7 +491,7 @@ console.log("Updated Live Stream Simulcast:", updateLiveSimulcast);
 
 #### Delete Live Stream Simulcast:
 
-Use the `deleteLiveStreamSimulcast` method to remove a specific simulcast from a live stream. Provide the `streamId` and `simulcastId` for the simulcast you want to delete. For more details, refer to the [Delete a simulcast](https://docs.fastpix.io/reference/delete-simulcast-of-stream) API documentation.
+Use the `deleteLiveStreamSimulcast` method to remove a specific simulcast from a live stream. Provide the `streamId` and `simulcastId` for the simulcast you want to delete. For more details, refer to the [Delete a simulcast](./docs/Live/ManageStreamSimulcast.md#method-deletelivestreamsimulcast) API documentation.
 
 ```javascript
 const deleteLiveSimulcast = await fastpix.deleteLiveStreamSimulcast({

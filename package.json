@@ -1,6 +1,6 @@
 {
   "name": "server-node-sdk",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "The official FastPix API SDK for Node.js, written in TypeScript",
   "types": "dist/index.d.ts",
   "main": "dist/index.mjs",
