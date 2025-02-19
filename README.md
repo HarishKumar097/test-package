@@ -119,7 +119,7 @@ main();
 
 #### Upload Media from a URL:
 
-Use the `uploadMediaFromUrl` method to upload media directly from a URL. For detailed configuration options, refer to the [Create media from URL](https://docs.fastpix.io/reference/create-media) API documentation.
+Use the `uploadMediaFromUrl` method to upload media directly from a URL. For detailed configuration options, refer to the [Create media from URL](./docs/VideoOnDemand/ManageMedia.md#Method-getAllMediaAssets) API documentation.
 
 ```javascript
 // Define the request payload for uploading media from a URL.
